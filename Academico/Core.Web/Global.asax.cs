@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Web.Helps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,7 @@ namespace Core.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            SessionFixed.SetSessionValueProvider(new WebSessionValueProvider());
         }
     }
 }

@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academico\aca_Menu_Info.cs" />
+    <Compile Include="Academico\aca_Menu_x_aca_Sede_Info.cs" />
+    <Compile Include="Academico\aca_Menu_x_seg_usuario_Info.cs" />
     <Compile Include="Academico\aca_Sede_Info.cs" />
     <Compile Include="General\tb_empresa_Info.cs" />
     <Compile Include="Helps\cl_funciones.cs" />

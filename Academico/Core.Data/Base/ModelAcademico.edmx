@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ModelAcademico.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ModelAcademico.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aca_AnioLectivo">
           <Key>
             <PropertyRef Name="IdEmpresa" />
@@ -204,6 +204,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spaca_corregir_menu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpresa" Type="int" Mode="In" />
+          <Parameter Name="IdSede" Type="int" Mode="In" />
+          <Parameter Name="IdUsuario" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelAcademicoStoreContainer">
           <EntitySet Name="aca_AnioLectivo" EntityType="Self.aca_AnioLectivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_Curso" EntityType="Self.aca_Curso" Schema="dbo" store:Type="Tables" />
@@ -231,8 +236,7 @@
             <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ModelAcademico" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -469,6 +473,11 @@
             <End Role="aca_Sede" EntitySet="aca_Sede" />
             <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
           </AssociationSet>
+          <FunctionImport Name="spaca_corregir_menu">
+            <Parameter Name="IdEmpresa" Mode="In" Type="Int32" />
+            <Parameter Name="IdSede" Mode="In" Type="Int32" />
+            <Parameter Name="IdUsuario" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -621,6 +630,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spaca_corregir_menu" FunctionName="ModelAcademico.Store.spaca_corregir_menu" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

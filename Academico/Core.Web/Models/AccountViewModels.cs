@@ -8,7 +8,8 @@ namespace Core.Web.Models
         [Required(ErrorMessage = "El campo empresa es obligatorio")]
         public int IdEmpresa { get; set; }
         [Required(ErrorMessage = "El campo sucursal es obligatorio")]
-        public int IdSucursal { get; set; }
+        public int IdSede { get; set; }
+        public int IdNivel { get; set; }
         [Required(ErrorMessage = "El campo usuario es obligatorio")]
         public string IdUsuario { get; set; }
         public string Contrasena { get; set; }

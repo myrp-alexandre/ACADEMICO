@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Web.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Academico\aca_Menu_Data.cs" />
+    <Compile Include="Academico\aca_Menu_x_aca_Sede_Data.cs" />
+    <Compile Include="Academico\aca_Menu_x_seg_usuario_Data.cs" />
     <Compile Include="Academico\aca_Sede_Data.cs" />
     <Compile Include="Base\aca_AnioLectivo.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
@@ -136,6 +140,7 @@
     <Compile Include="Base\tb_empresa.cs">
       <DependentUpon>ModelGeneral.tt</DependentUpon>
     </Compile>
+    <Compile Include="General\ListEditItemRequestedByValueEventArgs.cs" />
     <Compile Include="General\tb_empresa_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeguridadAcceso\seg_usuario_Data.cs" />

@@ -12,6 +12,8 @@ namespace Core.Data.Base
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EntitiesAcademico : DbContext
     {
@@ -34,5 +36,22 @@ namespace Core.Data.Base
         public virtual DbSet<aca_Profesor> aca_Profesor { get; set; }
         public virtual DbSet<aca_Seccion> aca_Seccion { get; set; }
         public virtual DbSet<aca_Sede> aca_Sede { get; set; }
+    
+        public virtual int spaca_corregir_menu(Nullable<int> idEmpresa, Nullable<int> idSede, string idUsuario)
+        {
+            var idEmpresaParameter = idEmpresa.HasValue ?
+                new ObjectParameter("IdEmpresa", idEmpresa) :
+                new ObjectParameter("IdEmpresa", typeof(int));
+    
+            var idSedeParameter = idSede.HasValue ?
+                new ObjectParameter("IdSede", idSede) :
+                new ObjectParameter("IdSede", typeof(int));
+    
+            var idUsuarioParameter = idUsuario != null ?
+                new ObjectParameter("IdUsuario", idUsuario) :
+                new ObjectParameter("IdUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spaca_corregir_menu", idEmpresaParameter, idSedeParameter, idUsuarioParameter);
+        }
     }
 }

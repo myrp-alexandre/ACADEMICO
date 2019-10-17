@@ -11,6 +11,8 @@ namespace Core.Web.Helps
         string IdUsuario { get; set; }
         string NomEmpresa { get; set; }
         string IdSucursal { get; set; }
+        string IdSede { get; set; }
+        string IdNivel { get; set; }
         string IdTransaccionSession { get; set; }
         string IdTransaccionSessionActual { get; set; }
     }
@@ -51,6 +53,18 @@ namespace Core.Web.Helps
             get { return _sessionValueProvider.IdSucursal; }
             set { _sessionValueProvider.IdSucursal = value; }
         }
+
+        public static string IdSede
+        {
+            get { return _sessionValueProvider.IdSucursal; }
+            set { _sessionValueProvider.IdSucursal = value; }
+        }
+
+        public static string IdNivel
+        {
+            get { return _sessionValueProvider.IdSucursal; }
+            set { _sessionValueProvider.IdSucursal = value; }
+        }
     }
     public class WebSessionValueProvider : ISessionValueProvider
     {
@@ -58,6 +72,8 @@ namespace Core.Web.Helps
         private const string _IdEmpresa = "FxAca_IdEmpresa";
         private const string _NomEmpresa = "FxAca_FIXED";
         private const string _IdSucursal = "FxAca_IdSucursal";
+        private const string _IdNivel = "FxAca_IdNivel";
+        private const string _IdSede = "FxAca_IdSede";
         private const string _IdTransaccionSession = "FxAca_IdTransaccionSesssion";
         private const string _IdTransaccionSessionActual = "FxAca_IdTransaccionSessionActual";
         public string IdEmpresa
@@ -89,6 +105,16 @@ namespace Core.Web.Helps
         {
             get { return (string)HttpContext.Current.Session[_IdTransaccionSessionActual]; }
             set { HttpContext.Current.Session[_IdTransaccionSessionActual] = value; }
+        }
+        public string IdSede
+        {
+            get { return (string)HttpContext.Current.Session[_IdSede]; }
+            set { HttpContext.Current.Session[_IdSede] = value; }
+        }
+        public string IdNivel
+        {
+            get { return (string)HttpContext.Current.Session[_IdNivel]; }
+            set { HttpContext.Current.Session[_IdNivel] = value; }
         }
     }
 }

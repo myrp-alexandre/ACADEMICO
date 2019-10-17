@@ -195,6 +195,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Academico\AcademicoAreaRegistration.cs" />
+    <Compile Include="Areas\Academico\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Academico\Controllers\MenuPorSedeController.cs" />
+    <Compile Include="Areas\Academico\Controllers\MenuPorSedePorUsuarioController.cs" />
+    <Compile Include="Areas\Academico\Controllers\seg_Menu_Info.cs" />
     <Compile Include="Areas\Reportes\ReportesAreaRegistration.cs" />
     <Compile Include="Areas\SeguridadAcceso\SeguridadAccesoAreaRegistration.cs" />
     <Compile Include="Areas\SeguridadAcceso\UsuarioController.cs" />
@@ -7356,6 +7360,15 @@
     <Content Include="AdminLTE\dist\css\adminlte.css.map" />
     <Content Include="AdminLTE\dist\css\adminlte.min.css.map" />
     <Content Include="Areas\SeguridadAcceso\Views\web.config" />
+    <Content Include="Areas\Academico\Views\Menu\Anular.cshtml" />
+    <Content Include="Areas\Academico\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\Menu\Modificar.cshtml" />
+    <Content Include="Areas\Academico\Views\Menu\Nuevo.cshtml" />
+    <Content Include="Areas\Academico\Views\Menu\_TreeListPartial_menu.cshtml" />
+    <Content Include="Areas\Academico\Views\MenuPorSede\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\MenuPorSede\_TreeListPartial_menu_x_sede.cshtml" />
+    <Content Include="Areas\Academico\Views\MenuPorSedePorUsuario\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\MenuPorSedePorUsuario\_TreeListPartial_menu_x_usuario.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7385,10 +7398,10 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\LoginEmpresa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Academico\Controllers\" />
     <Folder Include="Areas\Academico\Models\" />
     <Folder Include="Areas\Academico\Views\Shared\" />
     <Folder Include="Areas\Reportes\Controllers\" />
