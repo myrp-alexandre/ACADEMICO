@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9998931b6fe3449684425cfad95f8b1e" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelSeguridadAcceso.seg_usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSeguridadAcceso.seg_usuario_x_aca_Sede" Width="1.5" PointX="3" PointY="2.125" />
+        <AssociationConnector Association="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario" />
+        <EntityTypeShape EntityType="ModelSeguridadAcceso.seg_Usuario_x_Empresa" Width="1.5" PointX="3" PointY="5.25" />
+        <AssociationConnector Association="ModelSeguridadAcceso.FK_seg_Usuario_x_Empresa_seg_usuario" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

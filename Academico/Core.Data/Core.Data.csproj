@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF0C301B-22DD-4B45-99DC-33A507CC734A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Core.Data</RootNamespace>
+    <AssemblyName>Core.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Academico\aca_Sede_Data.cs" />
+    <Compile Include="Base\aca_AnioLectivo.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Curso.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Jornada.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Menu.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Menu_x_aca_Sede.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Menu_x_seg_usuario.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Profesor.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Seccion.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Sede.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelAcademico.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAcademico.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelAcademico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelAcademico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAcademico.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelGeneral.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGeneral.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelGeneral.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGeneral.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelGeneral.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelGeneral.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelSeguridadAcceso.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSeguridadAcceso.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelSeguridadAcceso.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ModelSeguridadAcceso.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSeguridadAcceso.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Base\seg_usuario.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\seg_usuario_x_aca_Sede.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\seg_Usuario_x_Empresa.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\tb_empresa.cs">
+      <DependentUpon>ModelGeneral.tt</DependentUpon>
+    </Compile>
+    <Compile Include="General\tb_empresa_Data.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeguridadAcceso\seg_usuario_Data.cs" />
+    <Compile Include="SeguridadAcceso\seg_usuario_x_aca_Sede_Data.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Info\Core.Info.csproj">
+      <Project>{01b5c318-17e8-4674-847e-c8fda6df7978}</Project>
+      <Name>Core.Info</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Base\ModelAcademico.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAcademico.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Base\ModelAcademico.edmx.diagram">
+      <DependentUpon>ModelAcademico.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Base\ModelSeguridadAcceso.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSeguridadAcceso.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Base\ModelGeneral.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelGeneral.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Base\ModelGeneral.edmx.diagram">
+      <DependentUpon>ModelGeneral.edmx</DependentUpon>
+    </None>
+    <None Include="Base\ModelSeguridadAcceso.edmx.diagram">
+      <DependentUpon>ModelSeguridadAcceso.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Base\ModelAcademico.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAcademico.edmx</DependentUpon>
+      <LastGenOutput>ModelAcademico.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Base\ModelAcademico.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAcademico.edmx</DependentUpon>
+      <LastGenOutput>ModelAcademico.cs</LastGenOutput>
+    </Content>
+    <Content Include="Base\ModelGeneral.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelGeneral.edmx</DependentUpon>
+      <LastGenOutput>ModelGeneral.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Base\ModelGeneral.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelGeneral.edmx</DependentUpon>
+      <LastGenOutput>ModelGeneral.cs</LastGenOutput>
+    </Content>
+    <Content Include="Base\ModelSeguridadAcceso.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSeguridadAcceso.edmx</DependentUpon>
+      <LastGenOutput>ModelSeguridadAcceso.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Base\ModelSeguridadAcceso.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSeguridadAcceso.edmx</DependentUpon>
+      <LastGenOutput>ModelSeguridadAcceso.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

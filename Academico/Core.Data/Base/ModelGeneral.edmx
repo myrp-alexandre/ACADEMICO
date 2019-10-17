@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModelGeneral.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" />
+          <Property Name="em_nombre" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="NombreComercial" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ContribuyenteEspecial" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="em_ruc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="em_gerente" Type="varchar" MaxLength="50" />
+          <Property Name="em_contador" Type="varchar" MaxLength="150" />
+          <Property Name="em_rucContador" Type="varchar" MaxLength="50" />
+          <Property Name="em_telefonos" Type="varchar" MaxLength="200" />
+          <Property Name="em_direccion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="em_logo" Type="image" />
+          <Property Name="em_fechaInicioContable" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="em_fechaInicioActividad" Type="date" Nullable="false" />
+          <Property Name="cod_entidad_dinardap" Type="varchar" MaxLength="50" />
+          <Property Name="em_Email" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityContainer Name="ModelGeneralStoreContainer">
+          <EntitySet Name="tb_empresa" EntityType="Self.tb_empresa" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelGeneral" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_empresa">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="em_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreComercial" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContribuyenteEspecial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="em_ruc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="em_gerente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="em_contador" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="em_rucContador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="em_telefonos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="em_direccion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="em_logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="em_fechaInicioContable" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="em_fechaInicioActividad" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cod_entidad_dinardap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="em_Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EntitiesGeneral" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_empresa" EntityType="Self.tb_empresa" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelGeneralStoreContainer" CdmEntityContainer="EntitiesGeneral">
+          <EntitySetMapping Name="tb_empresa">
+            <EntityTypeMapping TypeName="ModelGeneral.tb_empresa">
+              <MappingFragment StoreEntitySet="tb_empresa">
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="em_nombre" ColumnName="em_nombre" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+                <ScalarProperty Name="ContribuyenteEspecial" ColumnName="ContribuyenteEspecial" />
+                <ScalarProperty Name="em_ruc" ColumnName="em_ruc" />
+                <ScalarProperty Name="em_gerente" ColumnName="em_gerente" />
+                <ScalarProperty Name="em_contador" ColumnName="em_contador" />
+                <ScalarProperty Name="em_rucContador" ColumnName="em_rucContador" />
+                <ScalarProperty Name="em_telefonos" ColumnName="em_telefonos" />
+                <ScalarProperty Name="em_direccion" ColumnName="em_direccion" />
+                <ScalarProperty Name="em_logo" ColumnName="em_logo" />
+                <ScalarProperty Name="em_fechaInicioContable" ColumnName="em_fechaInicioContable" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="em_fechaInicioActividad" ColumnName="em_fechaInicioActividad" />
+                <ScalarProperty Name="cod_entidad_dinardap" ColumnName="cod_entidad_dinardap" />
+                <ScalarProperty Name="em_Email" ColumnName="em_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

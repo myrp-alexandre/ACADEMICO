@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelSeguridadAcceso.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="seg_usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar(max)" />
+          <Property Name="estado" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha_Transaccion" Type="datetime" />
+          <Property Name="IdUsuarioUltModi" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_UltMod" Type="datetime" />
+          <Property Name="IdUsuarioUltAnu" Type="varchar" MaxLength="20" />
+          <Property Name="Fecha_UltAnu" Type="datetime" />
+          <Property Name="MotivoAnulacion" Type="varchar(max)" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="ExigirDirectivaContrasenia" Type="bit" />
+          <Property Name="CambiarContraseniaSgtSesion" Type="bit" />
+          <Property Name="es_super_admin" Type="bit" Nullable="false" />
+          <Property Name="contrasena_admin" Type="varchar(max)" />
+          <Property Name="EsContador" Type="bit" />
+          <Property Name="IdMenu" Type="int" />
+          <Property Name="IPUsuario" Type="varchar" MaxLength="1000" />
+          <Property Name="IPImpresora" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="seg_usuario_x_aca_Sede">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+          </Key>
+          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdSede" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="seg_Usuario_x_Empresa">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_seg_usuario_x_aca_Sede_seg_usuario">
+          <End Role="seg_usuario" Type="Self.seg_usuario" Multiplicity="1" />
+          <End Role="seg_usuario_x_aca_Sede" Type="Self.seg_usuario_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seg_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="seg_usuario_x_aca_Sede">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_seg_Usuario_x_Empresa_seg_usuario">
+          <End Role="seg_usuario" Type="Self.seg_usuario" Multiplicity="1" />
+          <End Role="seg_Usuario_x_Empresa" Type="Self.seg_Usuario_x_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seg_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="seg_Usuario_x_Empresa">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelSeguridadAccesoStoreContainer">
+          <EntitySet Name="seg_usuario" EntityType="Self.seg_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_usuario_x_aca_Sede" EntityType="Self.seg_usuario_x_aca_Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seg_Usuario_x_Empresa" EntityType="Self.seg_Usuario_x_Empresa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_seg_usuario_x_aca_Sede_seg_usuario" Association="Self.FK_seg_usuario_x_aca_Sede_seg_usuario">
+            <End Role="seg_usuario" EntitySet="seg_usuario" />
+            <End Role="seg_usuario_x_aca_Sede" EntitySet="seg_usuario_x_aca_Sede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_seg_Usuario_x_Empresa_seg_usuario" Association="Self.FK_seg_Usuario_x_Empresa_seg_usuario">
+            <End Role="seg_usuario" EntitySet="seg_usuario" />
+            <End Role="seg_Usuario_x_Empresa" EntitySet="seg_Usuario_x_Empresa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelSeguridadAcceso" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="seg_usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Transaccion" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioUltModi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_UltMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioUltAnu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_UltAnu" Type="DateTime" Precision="3" />
+          <Property Name="MotivoAnulacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExigirDirectivaContrasenia" Type="Boolean" />
+          <Property Name="CambiarContraseniaSgtSesion" Type="Boolean" />
+          <Property Name="es_super_admin" Type="Boolean" Nullable="false" />
+          <Property Name="contrasena_admin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EsContador" Type="Boolean" />
+          <Property Name="IdMenu" Type="Int32" />
+          <Property Name="IPUsuario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IPImpresora" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="seg_usuario_x_aca_Sede" Relationship="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario" FromRole="seg_usuario" ToRole="seg_usuario_x_aca_Sede" />
+          <NavigationProperty Name="seg_Usuario_x_Empresa" Relationship="ModelSeguridadAcceso.FK_seg_Usuario_x_Empresa_seg_usuario" FromRole="seg_usuario" ToRole="seg_Usuario_x_Empresa" />
+        </EntityType>
+        <EntityContainer Name="EntitiesSeguridadAcceso" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="seg_usuario" EntityType="Self.seg_usuario" />
+          <EntitySet Name="seg_usuario_x_aca_Sede" EntityType="ModelSeguridadAcceso.seg_usuario_x_aca_Sede" />
+          <AssociationSet Name="FK_seg_usuario_x_aca_Sede_seg_usuario" Association="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario">
+            <End Role="seg_usuario" EntitySet="seg_usuario" />
+            <End Role="seg_usuario_x_aca_Sede" EntitySet="seg_usuario_x_aca_Sede" />
+          </AssociationSet>
+          <EntitySet Name="seg_Usuario_x_Empresa" EntityType="ModelSeguridadAcceso.seg_Usuario_x_Empresa" />
+          <AssociationSet Name="FK_seg_Usuario_x_Empresa_seg_usuario" Association="ModelSeguridadAcceso.FK_seg_Usuario_x_Empresa_seg_usuario">
+            <End Role="seg_usuario" EntitySet="seg_usuario" />
+            <End Role="seg_Usuario_x_Empresa" EntitySet="seg_Usuario_x_Empresa" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="seg_usuario_x_aca_Sede">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+          </Key>
+          <Property Name="IdUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdSede" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="seg_usuario" Relationship="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario" FromRole="seg_usuario_x_aca_Sede" ToRole="seg_usuario" />
+        </EntityType>
+        <Association Name="FK_seg_usuario_x_aca_Sede_seg_usuario">
+          <End Type="ModelSeguridadAcceso.seg_usuario" Role="seg_usuario" Multiplicity="1" />
+          <End Type="ModelSeguridadAcceso.seg_usuario_x_aca_Sede" Role="seg_usuario_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seg_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="seg_usuario_x_aca_Sede">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="seg_Usuario_x_Empresa">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+            <PropertyRef Name="IdEmpresa" />
+          </Key>
+          <Property Name="IdUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="seg_usuario" Relationship="ModelSeguridadAcceso.FK_seg_Usuario_x_Empresa_seg_usuario" FromRole="seg_Usuario_x_Empresa" ToRole="seg_usuario" />
+        </EntityType>
+        <Association Name="FK_seg_Usuario_x_Empresa_seg_usuario">
+          <End Type="ModelSeguridadAcceso.seg_usuario" Role="seg_usuario" Multiplicity="1" />
+          <End Type="ModelSeguridadAcceso.seg_Usuario_x_Empresa" Role="seg_Usuario_x_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seg_usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="seg_Usuario_x_Empresa">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelSeguridadAccesoStoreContainer" CdmEntityContainer="EntitiesSeguridadAcceso">
+          <EntitySetMapping Name="seg_usuario">
+            <EntityTypeMapping TypeName="ModelSeguridadAcceso.seg_usuario">
+              <MappingFragment StoreEntitySet="seg_usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Fecha_Transaccion" ColumnName="Fecha_Transaccion" />
+                <ScalarProperty Name="IdUsuarioUltModi" ColumnName="IdUsuarioUltModi" />
+                <ScalarProperty Name="Fecha_UltMod" ColumnName="Fecha_UltMod" />
+                <ScalarProperty Name="IdUsuarioUltAnu" ColumnName="IdUsuarioUltAnu" />
+                <ScalarProperty Name="Fecha_UltAnu" ColumnName="Fecha_UltAnu" />
+                <ScalarProperty Name="MotivoAnulacion" ColumnName="MotivoAnulacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ExigirDirectivaContrasenia" ColumnName="ExigirDirectivaContrasenia" />
+                <ScalarProperty Name="CambiarContraseniaSgtSesion" ColumnName="CambiarContraseniaSgtSesion" />
+                <ScalarProperty Name="es_super_admin" ColumnName="es_super_admin" />
+                <ScalarProperty Name="contrasena_admin" ColumnName="contrasena_admin" />
+                <ScalarProperty Name="EsContador" ColumnName="EsContador" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="IPUsuario" ColumnName="IPUsuario" />
+                <ScalarProperty Name="IPImpresora" ColumnName="IPImpresora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_usuario_x_aca_Sede">
+            <EntityTypeMapping TypeName="ModelSeguridadAcceso.seg_usuario_x_aca_Sede">
+              <MappingFragment StoreEntitySet="seg_usuario_x_aca_Sede">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seg_Usuario_x_Empresa">
+            <EntityTypeMapping TypeName="ModelSeguridadAcceso.seg_Usuario_x_Empresa">
+              <MappingFragment StoreEntitySet="seg_Usuario_x_Empresa">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

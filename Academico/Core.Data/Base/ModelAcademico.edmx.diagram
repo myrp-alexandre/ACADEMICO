@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="baf8f787ff3d4a13b589caf343ea4b3c" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelAcademico.aca_AnioLectivo" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Curso" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Jornada" Width="1.5" PointX="4.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Menu" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Menu_x_aca_Sede" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Menu_x_seg_usuario" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Profesor" Width="1.5" PointX="6.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Seccion" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelAcademico.aca_Sede" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Sede" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Sede" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
