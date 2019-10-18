@@ -11,3 +11,12 @@
     <a class="btn btn-primary" href="@Url.Action("Consulta","ReportesPorUsuario",new { Area = "General" },null)">Reportes</a>
 </div>
 <hr />
+
+@Html.DevExpress().TreeView(settings =>
+    {
+        settings.Name = "treeViewMenuInicio";
+        settings.EnableHotTrack = true;
+        var Nodes = new List<Core.Info.SeguridadAcceso.aca_Menu_x_seg_usuario_Info>();
+        Core.Web.Areas.SeguridadAcceso.Controllers.MenuPorSedePorUsuarioController.CreateTreeViewNodesRecursive(Nodes, settings.Nodes, 0, (Core.Web.Helps.SessionFixed.IdEmpresa == null ? 0 : Convert.ToInt32(Core.Web.Helps.SessionFixed.IdEmpresa)), (Core.Web.Helps.SessionFixed.IdSede == null ? 0 : Convert.ToInt32(Core.Web.Helps.SessionFixed.IdSede)), string.IsNullOrEmpty(Core.Web.Helps.SessionFixed.IdUsuario) ? "" : Core.Web.Helps.SessionFixed.IdUsuario);
+
+    }).GetHtml()

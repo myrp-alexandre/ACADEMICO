@@ -1,12 +1,14 @@
 ﻿using Core.Bus.Academico;
+using Core.Bus.SeguridadAcceso;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Core.Web.Areas.Academico.Controllers
+namespace Core.Web.Areas.SeguridadAcceso.Controllers
 {
     public class MenuController : Controller
     {

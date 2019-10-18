@@ -195,13 +195,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Academico\AcademicoAreaRegistration.cs" />
-    <Compile Include="Areas\Academico\Controllers\MenuController.cs" />
-    <Compile Include="Areas\Academico\Controllers\MenuPorSedeController.cs" />
-    <Compile Include="Areas\Academico\Controllers\MenuPorSedePorUsuarioController.cs" />
-    <Compile Include="Areas\Academico\Controllers\seg_Menu_Info.cs" />
     <Compile Include="Areas\Reportes\ReportesAreaRegistration.cs" />
+    <Compile Include="Areas\SeguridadAcceso\Controllers\MenuController.cs" />
+    <Compile Include="Areas\SeguridadAcceso\Controllers\MenuPorSedeController.cs" />
+    <Compile Include="Areas\SeguridadAcceso\Controllers\MenuPorSedePorUsuarioController.cs" />
     <Compile Include="Areas\SeguridadAcceso\SeguridadAccesoAreaRegistration.cs" />
-    <Compile Include="Areas\SeguridadAcceso\UsuarioController.cs" />
+    <Compile Include="Areas\SeguridadAcceso\Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -7360,15 +7359,23 @@
     <Content Include="AdminLTE\dist\css\adminlte.css.map" />
     <Content Include="AdminLTE\dist\css\adminlte.min.css.map" />
     <Content Include="Areas\SeguridadAcceso\Views\web.config" />
-    <Content Include="Areas\Academico\Views\Menu\Anular.cshtml" />
-    <Content Include="Areas\Academico\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Academico\Views\Menu\Modificar.cshtml" />
-    <Content Include="Areas\Academico\Views\Menu\Nuevo.cshtml" />
-    <Content Include="Areas\Academico\Views\Menu\_TreeListPartial_menu.cshtml" />
-    <Content Include="Areas\Academico\Views\MenuPorSede\Index.cshtml" />
-    <Content Include="Areas\Academico\Views\MenuPorSede\_TreeListPartial_menu_x_sede.cshtml" />
-    <Content Include="Areas\Academico\Views\MenuPorSedePorUsuario\Index.cshtml" />
-    <Content Include="Areas\Academico\Views\MenuPorSedePorUsuario\_TreeListPartial_menu_x_usuario.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Menu\Anular.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Menu\Modificar.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Menu\Nuevo.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Menu\_TreeListPartial_menu.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\MenuPorSede\Index.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\MenuPorSede\_TreeListPartial_menu_x_sede.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\MenuPorSedePorUsuario\Index.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\MenuPorSedePorUsuario\_TreeListPartial_menu_x_usuario.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\Anular.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\Index.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\Modificar.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\Nuevo.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\_CmbEmpresa_det.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial_usuario.cshtml" />
+    <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial_Usuario_x_Sede.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7402,15 +7409,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Academico\Controllers\" />
     <Folder Include="Areas\Academico\Models\" />
     <Folder Include="Areas\Academico\Views\Shared\" />
     <Folder Include="Areas\Reportes\Controllers\" />
     <Folder Include="Areas\Reportes\Models\" />
     <Folder Include="Areas\Reportes\Views\Shared\" />
-    <Folder Include="Areas\SeguridadAcceso\Controllers\" />
     <Folder Include="Areas\SeguridadAcceso\Models\" />
     <Folder Include="Areas\SeguridadAcceso\Views\Shared\" />
-    <Folder Include="Areas\SeguridadAcceso\Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

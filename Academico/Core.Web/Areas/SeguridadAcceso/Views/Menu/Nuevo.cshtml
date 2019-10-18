@@ -1,18 +1,16 @@
-﻿@model Core.Info.Academico.aca_Menu_Info
+﻿@model Core.Info.SeguridadAcceso.aca_Menu_Info
 @{
-    ViewBag.Title = "Modificar menú";
-    //if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
-    //{
-    //    Response.Redirect("~/Account/Login");
-    //}
+    ViewBag.Title = "Nuevo menú";
+    if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/ValidacionBotonSubmit.js"></script>
 
-@using (Html.BeginForm("Modificar", "Menu", FormMethod.Post, new { @role = "form", @class = "form" }))
+@using (Html.BeginForm("Nuevo", "Menu", FormMethod.Post, new { @role = "form", @class = "form" }))
 {
-    @Html.HiddenFor(q => q.IdMenu)
-
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-12">

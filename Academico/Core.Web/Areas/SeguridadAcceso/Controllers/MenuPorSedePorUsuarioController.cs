@@ -2,6 +2,7 @@
 using Core.Bus.SeguridadAcceso;
 using Core.Erp.Bus.General;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using Core.Web.Helps;
 using DevExpress.Web.Mvc;
 using System;
@@ -10,7 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Core.Web.Areas.Academico.Controllers
+namespace Core.Web.Areas.SeguridadAcceso.Controllers
 {
     public class MenuPorSedePorUsuarioController : Controller
     {
@@ -32,8 +33,8 @@ namespace Core.Web.Areas.Academico.Controllers
         public ActionResult Index(aca_Menu_x_seg_usuario_Info model)
         {
             model.modificado = 0;
-            var lista_menu = bus_menu_sede_usuario.get_list(model.IdEmpresa, model.IdUsuario, true);
-            var lista_usuario = bus_menu_sede_usuario.get_list(model.IdEmpresa, model.IdUsuario, false);
+            var lista_menu = bus_menu_sede_usuario.get_list(model.IdEmpresa, model.IdSede, model.IdUsuario, true);
+            var lista_usuario = bus_menu_sede_usuario.get_list(model.IdEmpresa, model.IdSede, model.IdUsuario, false);
 
             ViewBag.IdEmpresa = model.IdEmpresa;
             ViewBag.IdSede = model.IdSede;
@@ -49,7 +50,7 @@ namespace Core.Web.Areas.Academico.Controllers
         {
 
             //var rows = bus_menu_x_empresa_x_usuario.get_list(IdEmpresa, IdUsuario, parentID);
-            var rows = seg_Menu_x_Sede_x_Usuario_Lista.get_list().Where(q => q.IdEmpresa == IdEmpresa && q.IdUsuario.ToLower() == IdUsuario.ToLower() && q.info_menu.IdMenuPadre == parentID).ToList();
+            var rows = seg_Menu_x_Sede_x_Usuario_Lista.get_list().Where(q => q.IdEmpresa == IdEmpresa && q.IdSede == IdSede && q.IdUsuario.ToLower() == IdUsuario.ToLower() && q.info_menu.IdMenuPadre == parentID).ToList();
 
             foreach (aca_Menu_x_seg_usuario_Info row in rows)
             {
@@ -77,7 +78,7 @@ namespace Core.Web.Areas.Academico.Controllers
         #endregion
 
         [ValidateInput(false)]
-        public ActionResult TreeListPartial_menu_x_usuario(int IdEmpresa = 0, int IdSede =0, string IdUsuario = "")
+        public ActionResult TreeListPartial_menu_x_usuario(int IdEmpresa = 0, int IdSede = 0, string IdUsuario = "")
         {
             //var model = bus_menu_x_empresa_x_usuario.get_list(IdEmpresa, IdUsuario,true);
             var model = Lista_menu_usuario.get_list();

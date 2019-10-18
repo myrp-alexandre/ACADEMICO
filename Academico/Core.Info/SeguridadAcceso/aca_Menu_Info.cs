@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core.Info.Academico
+namespace Core.Info.SeguridadAcceso
 {
     public class aca_Menu_Info
     {

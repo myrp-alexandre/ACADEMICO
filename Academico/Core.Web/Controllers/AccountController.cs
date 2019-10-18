@@ -14,7 +14,7 @@ using Core.Bus.SeguridadAcceso;
 using Core.Bus.Academico;
 using Core.Web.Helps;
 using Core.Erp.Bus.General;
-using Core.Web.Areas.Academico.Controllers;
+using Core.Web.Areas.SeguridadAcceso.Controllers;
 
 namespace Core.Web.Controllers
 {
@@ -96,7 +96,8 @@ namespace Core.Web.Controllers
                 SessionFixed.IdUsuario = usuario.IdUsuario;
                 //SessionFixed.EsSuperAdmin = usuario.es_super_admin.ToString();
                 //SessionFixed.IdCaja = bus_caja.GetIdCajaPorUsuario(model.IdEmpresa, SessionFixed.IdUsuario).ToString();
-                seg_Menu_x_Sede_x_Usuario_Lista.set_list(bus_usuario_x_sede.get_list(model.IdEmpresa, usuario.IdUsuario, false));
+                var lista = bus_usuario_x_sede.get_list(model.IdEmpresa, model.IdSede, usuario.IdUsuario, false);
+                seg_Menu_x_Sede_x_Usuario_Lista.set_list(bus_usuario_x_sede.get_list(model.IdEmpresa, model.IdSede, usuario.IdUsuario, false));
                 if (usuario.IdMenu != null)
                 {
                     var menu = bus_menu.get_info((int)usuario.IdMenu);
@@ -146,7 +147,7 @@ namespace Core.Web.Controllers
             ViewBag.lst_empresas = lst_empresas;
         }
         #region Json
-        public JsonResult cargar_sucursal_x_empresa(int IdEmpresa = 0, string IdUsuario = "")
+        public JsonResult cargar_sede_x_empresa(int IdEmpresa = 0, string IdUsuario = "")
         {
             var login = bus_sede.GetList(IdEmpresa, false);
             return Json(login, JsonRequestBehavior.AllowGet);

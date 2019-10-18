@@ -1,24 +1,22 @@
-
-
 @{
     var treeList = Html.DevExpress().TreeList(settings => {
         settings.Name = "TreeList_menu_x_usuario";
-        settings.CallbackRouteValues = new { Controller = "MenuPorEmpresaPorUsuario", Action = "TreeListPartial_menu_x_usuario", IdEmpresa = ViewBag.IdEmpresa, IdSede = ViewBag.IdSede, IdUsuario = ViewBag.IdUsuario };
+        settings.CallbackRouteValues = new { Controller = "MenuPorSedePorUsuario", Action = "TreeListPartial_menu_x_usuario", IdEmpresa = ViewBag.IdEmpresa, IdSede = ViewBag.IdSede, IdUsuario = ViewBag.IdUsuario };
         settings.Width = System.Web.UI.WebControls.Unit.Percentage(100);
         settings.KeyFieldName = "IdMenu";
         settings.ParentFieldName = "IdMenuPadre";
 
-        settings.SettingsEditing.UpdateNodeRouteValues = new { Controller = "MenuPorEmpresaPorUsuario", Action = "EditingUpdate", Area = "SeguridadAcceso" };
+        //settings.SettingsEditing.UpdateNodeRouteValues = new { Controller = "MenuPorEmpresaPorUsuario", Action = "EditingUpdate", Area = "SeguridadAcceso" };
         settings.SettingsEditing.Mode = TreeListEditMode.EditFormAndDisplayNode;
         settings.SettingsEditing.ConfirmDelete = true;
         settings.Settings.GridLines = System.Web.UI.WebControls.GridLines.Both;
         settings.SettingsBehavior.ExpandCollapseAction = TreeListExpandCollapseAction.NodeDblClick;
 
-        settings.CommandColumn.Visible = true;
+        settings.CommandColumn.Visible = false;
         settings.CommandColumn.ShowNewButtonInHeader = false;
         settings.CommandColumn.NewButton.Visible = false;
         settings.CommandColumn.DeleteButton.Visible = false;
-        settings.CommandColumn.EditButton.Visible = true;
+        settings.CommandColumn.EditButton.Visible = false;
         
         settings.Columns.Add(column =>
         {

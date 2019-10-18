@@ -27,7 +27,7 @@ namespace Core.Info.SeguridadAcceso
         public string IPImpresora { get; set; }
 
         #region Campos que no existen en la tabla
-        public List<seg_usuario_x_aca_Sede_Info> ListaUsuarioPorSede { get; set; }
+        public List<seg_usuario_x_aca_Sede_Info> lst_usuario_sede { get; set; }
         #endregion
     }
 }

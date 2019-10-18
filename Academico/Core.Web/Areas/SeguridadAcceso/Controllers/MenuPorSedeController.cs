@@ -1,6 +1,8 @@
 ﻿using Core.Bus.Academico;
+using Core.Bus.SeguridadAcceso;
 using Core.Erp.Bus.General;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using Core.Web.Helps;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Core.Web.Areas.Academico.Controllers
+namespace Core.Web.Areas.SeguridadAcceso.Controllers
 {
     public class MenuPorSedeController : Controller
     {
@@ -42,7 +44,7 @@ namespace Core.Web.Areas.Academico.Controllers
         #endregion
 
         [ValidateInput(false)]
-        public ActionResult TreeListPartial_menu_x_sede(int IdEmpresa = 0, int IdSede=0)
+        public ActionResult TreeListPartial_menu_x_sede(int IdEmpresa = 0, int IdSede = 0)
         {
             List<aca_Menu_x_aca_Sede_Info> model = bus_menu_x_sede.get_list(IdEmpresa, IdSede);
             ViewBag.IdEmpresa = IdEmpresa;
@@ -65,7 +67,7 @@ namespace Core.Web.Areas.Academico.Controllers
             return PartialView("_TreeListPartial_menu_x_sede", model);
         }
 
-        public JsonResult guardar(int IdEmpresa = 0, int IdSede=0, string Ids = "")
+        public JsonResult guardar(int IdEmpresa = 0, int IdSede = 0, string Ids = "")
         {
             string[] array = Ids.Split(',');
             List<aca_Menu_x_aca_Sede_Info> lista = new List<aca_Menu_x_aca_Sede_Info>();

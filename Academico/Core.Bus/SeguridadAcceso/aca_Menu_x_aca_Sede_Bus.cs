@@ -1,12 +1,14 @@
 ﻿using Core.Data.Academico;
+using Core.Data.SeguridadAcceso;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Bus.Academico
+namespace Core.Bus.SeguridadAcceso
 {
     public class aca_Menu_x_aca_Sede_Bus
     {

@@ -1,12 +1,13 @@
 ﻿using Core.Data.Base;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.Academico
+namespace Core.Data.SeguridadAcceso
 {
     public class aca_Menu_x_aca_Sede_Data
     {
@@ -104,14 +105,14 @@ namespace Core.Data.Academico
                         {
                             IdEmpresa = item.IdEmpresa,
                             IdSede = item.IdSede,
-                            IdMenu = item.IdMenu,
+                            IdMenu = item.IdMenu
                         };
                         Context.aca_Menu_x_aca_Sede.Add(Entity);
                     }
                     Context.SaveChanges();
 
-                    string sql = "exec spaca_corregir_menu '" + IdEmpresa + "','" + IdSede.ToString() + "','" + "" + "'";
-                    Context.Database.ExecuteSqlCommand(sql);
+                    //string sql = "exec spaca_corregir_menu '" + IdEmpresa + "','" + IdSede.ToString() + "','" + "" + "'";
+                    //Context.Database.ExecuteSqlCommand(sql);
                 }
 
                 return true;

@@ -1,21 +1,23 @@
 ﻿using Core.Data.Academico;
+using Core.Data.SeguridadAcceso;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Bus.Academico
+namespace Core.Bus.SeguridadAcceso
 {
     public class aca_Menu_x_seg_usuario_Bus
     {
         aca_Menu_x_seg_usuario_Data odata = new aca_Menu_x_seg_usuario_Data();
-        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, string IdUsuario, bool MostrarTodo)
+        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, int IdSede, string IdUsuario, bool MostrarTodo)
         {
             try
             {
-                return odata.get_list(IdEmpresa, IdUsuario, MostrarTodo);
+                return odata.get_list(IdEmpresa, IdSede, IdUsuario, MostrarTodo);
             }
             catch (Exception)
             {
@@ -24,11 +26,11 @@ namespace Core.Bus.Academico
             }
         }
 
-        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, string IdUsuario, int IdMenuPadre)
+        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, int IdSede, string IdUsuario, int IdMenuPadre)
         {
             try
             {
-                return odata.get_list(IdEmpresa, IdUsuario, IdMenuPadre);
+                return odata.get_list(IdEmpresa, IdSede, IdUsuario, IdMenuPadre);
             }
             catch (Exception)
             {

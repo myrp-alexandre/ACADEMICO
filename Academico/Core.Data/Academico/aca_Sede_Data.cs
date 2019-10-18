@@ -78,5 +78,41 @@ namespace Core.Data.Academico
                 throw;
             }
         }
+
+        public List<aca_Sede_Info> GetListSinEmpresa(bool mostrar_anulados)
+        {
+            try
+            {
+                List<aca_Sede_Info> Lista = new List<aca_Sede_Info>();
+
+                using (EntitiesAcademico Context = new EntitiesAcademico())
+                {
+                    var lst = Context.aca_Sede.Where(q => q.Estado == (mostrar_anulados ? q.Estado : true)).ToList();
+
+                    lst.ForEach(q =>
+                    {
+                        Lista.Add(new aca_Sede_Info
+                        {
+                            IdEmpresa = q.IdEmpresa,
+                            IdSede = q.IdSede,
+                            IdSucursal = q.IdSucursal,
+                            NomSede = q.NomSede,
+                            Direccion = q.Direccion,
+                            NombreRector = q.NombreRector,
+                            NombreSecretaria = q.NombreSecretaria,
+                            Estado = q.Estado
+                        });
+                    });
+                }
+
+                Lista.ForEach(v => { v.IdString = v.IdEmpresa.ToString("000") + v.IdSucursal.ToString("000") + v.IdSede.ToString("000"); });
+                return Lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

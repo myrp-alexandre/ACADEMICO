@@ -23,12 +23,24 @@ namespace Core.Bus.Academico
                 throw;
             }
         }
-
+        
         public aca_Sede_Info GetInfo(int IdEmpresa, int IdSede)
         {
             try
             {
                 return odata.GetInfo(IdEmpresa, IdSede);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<aca_Sede_Info> GetListSinEmpresa(bool MostrarAnulados)
+        {
+            try
+            {
+                return odata.GetListSinEmpresa(MostrarAnulados);
             }
             catch (Exception)
             {

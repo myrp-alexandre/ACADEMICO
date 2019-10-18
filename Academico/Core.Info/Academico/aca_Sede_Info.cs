@@ -18,5 +18,9 @@ namespace Core.Info.Academico
         public bool Estado { get; set; }
         public string IdUsuarioCreacion { get; set; }
         public string MotivoAnulacion { get; set; }
+
+        #region Campos que no existen en la tabla
+        public string IdString { get; set; }
+        #endregion
     }
 }

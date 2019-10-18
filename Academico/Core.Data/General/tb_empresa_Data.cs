@@ -94,5 +94,66 @@ namespace Core.Data.General
                 throw;
             }
         }
+
+        #region Bajo demanda
+        public tb_empresa_Info get_info_demanda(int value)
+        {
+            tb_empresa_Info info = new tb_empresa_Info();
+            using (EntitiesGeneral Contex = new EntitiesGeneral())
+            {
+                info = (from q in Contex.tb_empresa
+                        where q.IdEmpresa == value
+                        select new tb_empresa_Info
+                        {
+                            IdEmpresa = q.IdEmpresa,
+                            codigo = q.codigo,
+                            em_nombre = q.em_nombre
+                        }).FirstOrDefault();
+            }
+            return info;
+        }
+        public tb_empresa_Info get_info_bajo_demanda(ListEditItemRequestedByValueEventArgs args)
+        {
+            decimal id;
+            if (args.Value == null || !decimal.TryParse(args.Value.ToString(), out id))
+                return null;
+            return get_info_demanda((int)args.Value);
+        }
+        public List<tb_empresa_Info> get_list(int skip, int take, string filter)
+        {
+            try
+            {
+                List<tb_empresa_Info> Lista = new List<tb_empresa_Info>();
+
+                EntitiesGeneral context_g = new EntitiesGeneral();
+
+                var lstg = context_g.tb_empresa.Where(q => q.Estado == "A" && (q.IdEmpresa.ToString() + " " + q.em_nombre).Contains(filter)).OrderBy(q => q.IdEmpresa).Skip(skip).Take(take);
+                foreach (var q in lstg)
+                {
+                    Lista.Add(new tb_empresa_Info
+                    {
+                        IdEmpresa = q.IdEmpresa,
+                        codigo = q.codigo,
+                        em_nombre = q.em_nombre
+                    });
+                }
+                context_g.Dispose();
+                return Lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<tb_empresa_Info> get_list_bajo_demanda(ListEditItemsRequestedByFilterConditionEventArgs args)
+        {
+            var skip = args.BeginIndex;
+            var take = args.EndIndex - args.BeginIndex + 1;
+            List<tb_empresa_Info> Lista = new List<tb_empresa_Info>();
+            Lista = get_list(skip, take, args.Filter);
+            return Lista;
+        }
+        #endregion
     }
 }

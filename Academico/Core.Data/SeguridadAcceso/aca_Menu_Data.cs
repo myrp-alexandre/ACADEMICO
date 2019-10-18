@@ -1,12 +1,13 @@
 ﻿using Core.Data.Base;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.Academico
+namespace Core.Data.SeguridadAcceso
 {
     public class aca_Menu_Data
     {

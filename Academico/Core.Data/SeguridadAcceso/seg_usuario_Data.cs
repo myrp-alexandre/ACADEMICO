@@ -157,9 +157,9 @@ namespace Core.Data.SeguridadAcceso
                     };
                     Context.seg_usuario.Add(Entity);
                     
-                    if (info.ListaUsuarioPorSede.Count() > 0)
+                    if (info.lst_usuario_sede.Count() > 0)
                     {
-                        foreach (var item in info.ListaUsuarioPorSede)
+                        foreach (var item in info.lst_usuario_sede)
                         {
                             Context.seg_usuario_x_aca_Sede.Add(new seg_usuario_x_aca_Sede
                             {
@@ -169,8 +169,8 @@ namespace Core.Data.SeguridadAcceso
                                 Observacion = item.Observacion                                
                             });
                         }
-                        var Lista_empresa = (from q in info.ListaUsuarioPorSede
-                                         group q by new
+                        var Lista_empresa = (from q in info.lst_usuario_sede
+                                             group q by new
                                          {
                                              q.IdEmpresa,
                                          } into emp
@@ -223,9 +223,9 @@ namespace Core.Data.SeguridadAcceso
                     var lista = Context.seg_Usuario_x_Empresa.Where(q => q.IdUsuario == info.IdUsuario).ToList();
                     Context.seg_Usuario_x_Empresa.RemoveRange(lista);
                     
-                   if (info.ListaUsuarioPorSede.Count() > 0)
+                   if (info.lst_usuario_sede.Count() > 0)
                     {
-                        foreach (var item in info.ListaUsuarioPorSede)
+                        foreach (var item in info.lst_usuario_sede)
                         {
                             Context.seg_usuario_x_aca_Sede.Add(new seg_usuario_x_aca_Sede
                             {
@@ -235,8 +235,8 @@ namespace Core.Data.SeguridadAcceso
                                 Observacion = item.Observacion                                
                             });
                         }
-                        var Lista_empresa = (from q in info.ListaUsuarioPorSede
-                                         group q by new
+                        var Lista_empresa = (from q in info.lst_usuario_sede
+                                             group q by new
                                          {
                                              q.IdEmpresa,
                                          } into emp

@@ -77,15 +77,15 @@
 <script type="text/javascript">
 
     $(function () {
-        cargar_sucursal_x_empresa();
-        $("#IdEmpresa").change(function () {
-            cargar_sucursal_x_empresa();
+        cargar_sede_x_empresa();
+        $("#IdSede").change(function () {
+            cargar_sede_x_empresa();
         });
     });
 
 
-    function cargar_sucursal_x_empresa() {
-        $("#IdSucursal").empty();        
+    function cargar_sede_x_empresa() {
+        $("#IdSede").empty();        
 
         var datos = {
             IdEmpresa: $("#IdEmpresa").val(),
@@ -95,7 +95,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("cargar_sucursal_x_empresa", "Account", new { Area = "" })',
+            url: '@Url.Action("cargar_sede_x_empresa", "Account", new { Area = "" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,
@@ -103,7 +103,7 @@
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 $.each(data, function (i, row) {
-                    $("#IdSucursal").append("<option value=" + row.IdSucursal + ">" + row.Su_Descripcion + "</option>");
+                    $("#IdSede").append("<option value=" + row.IdSede + ">" + row.NomSede + "</option>");
                 });
             },
             error: function (error) {

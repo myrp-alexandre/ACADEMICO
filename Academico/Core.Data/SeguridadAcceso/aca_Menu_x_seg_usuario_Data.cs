@@ -1,16 +1,17 @@
 ﻿using Core.Data.Base;
 using Core.Info.Academico;
+using Core.Info.SeguridadAcceso;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.Academico
+namespace Core.Data.SeguridadAcceso
 {
     public class aca_Menu_x_seg_usuario_Data
     {
-        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, string IdUsuario, bool MostrarTodo)
+        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, int IdSede, string IdUsuario, bool MostrarTodo)
         {
             try
             {
@@ -22,18 +23,21 @@ namespace Core.Data.Academico
                              join me in Context.aca_Menu_x_aca_Sede
                              on m.IdMenu equals me.IdMenu
                              join meu in Context.aca_Menu_x_seg_usuario
-                             on new { me.IdEmpresa, me.IdMenu } equals new { meu.IdEmpresa, meu.IdMenu }
+                             on new { me.IdEmpresa, me.IdSede, me.IdMenu } equals new { meu.IdEmpresa, meu.IdSede, meu.IdMenu }
                              where m.Estado == true && meu.IdEmpresa == IdEmpresa
                              && meu.IdUsuario == IdUsuario
+                             && meu.IdSede == IdSede
                              orderby m.PosicionMenu
                              select new aca_Menu_x_seg_usuario_Info
                              {
                                  seleccionado = true,
                                  IdEmpresa = meu.IdEmpresa,
+                                 IdSede = meu.IdSede,
                                  IdUsuario = meu.IdUsuario,
                                  IdMenu = meu.IdMenu,
                                  IdMenuPadre = m.IdMenuPadre,
                                  DescripcionMenu = m.DescripcionMenu,
+                                 Perfil = meu.Perfil,
                                  info_menu = new aca_Menu_Info
                                  {
                                      IdMenu = m.IdMenu,
@@ -50,16 +54,18 @@ namespace Core.Data.Academico
                         Lista.AddRange((from q in Context.aca_Menu
                                         join me in Context.aca_Menu_x_aca_Sede
                                         on q.IdMenu equals me.IdMenu
-                                        where q.Estado == true && me.IdEmpresa == IdEmpresa
-                                        && !Context.aca_Menu_x_seg_usuario.Any(meu => meu.IdMenu == q.IdMenu && meu.IdEmpresa == IdEmpresa && meu.IdUsuario == IdUsuario)
+                                        where q.Estado == true && me.IdEmpresa == IdEmpresa && me.IdSede == IdSede
+                                        && !Context.aca_Menu_x_seg_usuario.Any(meu => meu.IdMenu == q.IdMenu && meu.IdEmpresa == IdEmpresa && me.IdSede == IdSede && meu.IdUsuario == IdUsuario)
                                         select new aca_Menu_x_seg_usuario_Info
                                         {
                                             seleccionado = false,
                                             IdEmpresa = IdEmpresa,
+                                            IdSede = IdSede,
                                             IdUsuario = IdUsuario,
                                             IdMenu = q.IdMenu,
                                             IdMenuPadre = q.IdMenuPadre,
                                             DescripcionMenu = q.DescripcionMenu,
+                                            Perfil = "",
                                             info_menu = new aca_Menu_Info
                                             {
                                                 IdMenu = q.IdMenu,
@@ -80,7 +86,7 @@ namespace Core.Data.Academico
             }
         }
 
-        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, string IdUsuario, int IdMenuPadre)
+        public List<aca_Menu_x_seg_usuario_Info> get_list(int IdEmpresa, int IdSede, string IdUsuario, int IdMenuPadre)
         {
             try
             {
@@ -92,8 +98,8 @@ namespace Core.Data.Academico
                              join me in Context.aca_Menu_x_aca_Sede
                              on m.IdMenu equals me.IdMenu
                              join meu in Context.aca_Menu_x_seg_usuario
-                             on new { me.IdEmpresa, me.IdMenu } equals new { meu.IdEmpresa, meu.IdMenu }
-                             where m.Estado == true && meu.IdEmpresa == IdEmpresa
+                             on new { me.IdEmpresa, me.IdSede, me.IdMenu } equals new { meu.IdEmpresa, meu.IdSede, meu.IdMenu }
+                             where m.Estado == true && meu.IdEmpresa == IdEmpresa && meu.IdSede== IdSede
                              && meu.IdUsuario == IdUsuario && m.IdMenuPadre == IdMenuPadre
                              orderby m.PosicionMenu
                              select new aca_Menu_x_seg_usuario_Info
@@ -102,6 +108,8 @@ namespace Core.Data.Academico
                                  IdEmpresa = meu.IdEmpresa,
                                  IdUsuario = meu.IdUsuario,
                                  IdMenu = meu.IdMenu,
+                                 IdSede = meu.IdSede,
+                                 Perfil = meu.Perfil,
                                  info_menu = new aca_Menu_Info
                                  {
                                      IdMenu = m.IdMenu,
@@ -156,19 +164,20 @@ namespace Core.Data.Academico
                             IdSede = item.IdSede,
                             IdUsuario = item.IdUsuario,
                             IdMenu = item.IdMenu,
+                            Perfil = item.Perfil,
                         };
                         Context.aca_Menu_x_seg_usuario.Add(Entity);
                     }
 
                     Context.SaveChanges();
-                    string sql = "exec spaca_corregir_menu '" + IdEmpresa + "','" + IdSede.ToString() +"','" + IdUsuario + "'";
-                    Context.Database.ExecuteSqlCommand(sql);
+                    //string sql = "exec spaca_corregir_menu '" + IdEmpresa + "','" + IdSede.ToString() +"','" + IdUsuario + "'";
+                    //Context.Database.ExecuteSqlCommand(sql);
 
                 }
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

@@ -56,14 +56,14 @@ namespace Core.Web.Helps
 
         public static string IdSede
         {
-            get { return _sessionValueProvider.IdSucursal; }
-            set { _sessionValueProvider.IdSucursal = value; }
+            get { return _sessionValueProvider.IdSede; }
+            set { _sessionValueProvider.IdSede = value; }
         }
 
         public static string IdNivel
         {
-            get { return _sessionValueProvider.IdSucursal; }
-            set { _sessionValueProvider.IdSucursal = value; }
+            get { return _sessionValueProvider.IdNivel; }
+            set { _sessionValueProvider.IdNivel = value; }
         }
     }
     public class WebSessionValueProvider : ISessionValueProvider

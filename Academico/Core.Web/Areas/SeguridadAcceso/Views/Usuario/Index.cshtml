@@ -1,0 +1,16 @@
+﻿@model Core.Info.SeguridadAcceso.seg_usuario_Info
+@{
+    ViewBag.Title = "Consulta de usuarios";
+    if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
+    {
+        //Response.Redirect("~/Account/Login");
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(q => q.IdTransaccionSession, new { @id = "IdTransaccionSession" })
+    @Html.Action("GridViewPartial_usuario")
+
+}
