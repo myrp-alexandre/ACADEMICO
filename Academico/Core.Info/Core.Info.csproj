@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Academico\aca_Curso_Info.cs" />
+    <Compile Include="Academico\aca_Jornada_Info.cs" />
+    <Compile Include="Academico\aca_NivelAcademico_Info.cs" />
+    <Compile Include="Academico\aca_Paralelo_Info.cs" />
     <Compile Include="Academico\aca_Sede_Info.cs" />
     <Compile Include="General\tb_empresa_Info.cs" />
     <Compile Include="General\tb_sucursal_Info.cs" />

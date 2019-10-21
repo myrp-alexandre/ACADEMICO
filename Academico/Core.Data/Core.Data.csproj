@@ -52,6 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Academico\aca_Curso_Data.cs" />
+    <Compile Include="Academico\aca_Jornada_Data.cs" />
+    <Compile Include="Academico\aca_NivelAcademico_Data.cs" />
+    <Compile Include="Academico\aca_Paralelo_Data.cs" />
     <Compile Include="Academico\aca_Sede_Data.cs" />
     <Compile Include="Base\aca_AnioLectivo.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>

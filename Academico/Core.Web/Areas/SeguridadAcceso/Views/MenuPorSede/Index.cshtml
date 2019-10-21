@@ -1,10 +1,10 @@
 ﻿@model Core.Info.SeguridadAcceso.aca_Menu_x_aca_Sede_Info
 @{
     ViewBag.Title = "Consulta de menú por sede";
-    //if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
-    //{
-    //    Response.Redirect("~/Account/Login");
-    //}
+    if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script>
@@ -31,7 +31,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("guardar", "MenuPorSede", new { Area = "Academico" })',
+            url: '@Url.Action("guardar", "MenuPorSede", new { Area = "SeguridadAcceso" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,

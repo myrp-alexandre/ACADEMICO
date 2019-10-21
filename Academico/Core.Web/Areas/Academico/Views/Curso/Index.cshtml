@@ -1,6 +1,6 @@
-﻿@model Core.Info.Helps.cl_filtros_Info
+﻿@model Core.Info.Academico.aca_Curso_Info
 @{
-    ViewBag.Title = "Consulta de sedes";
+    ViewBag.Title = "Consulta de cursos";
 
     if (string.IsNullOrEmpty(Core.Web.Helps.SessionFixed.IdUsuario) || string.IsNullOrEmpty(Core.Web.Helps.SessionFixed.IdEmpresa))
     {
@@ -14,7 +14,7 @@
     @Html.HiddenFor(q => q.IdEmpresa, new { @id = "IdEmpresa" })
     @Html.HiddenFor(q => q.IdTransaccionSession, new { @id = "IdTransaccionSession" })
 
-    @Html.Action("GridViewPartial_sede")
+    @Html.Action("GridViewPartial_curso")
 
 }
 

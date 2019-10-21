@@ -33,7 +33,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("guardar", "MenuPorSedePorUsuario", new { Area = "Academico" })',
+            url: '@Url.Action("guardar", "MenuPorSedePorUsuario", new { Area = "SeguridadAcceso" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,
