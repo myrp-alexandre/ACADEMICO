@@ -17,7 +17,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_Info> Lista;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                         Lista = Context.aca_Menu.Where(q=> q.Estado == (mostrar_anulados == true ? q.Estado : true)).Select(q => new aca_Menu_Info
                         {
@@ -45,7 +45,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_Info> Lista;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     if (mostrar_anulados)
                         Lista = (from q in Context.aca_Menu
@@ -102,7 +102,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 aca_Menu_Info info = new aca_Menu_Info();
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     aca_Menu Entity = Context.aca_Menu.FirstOrDefault(q => q.IdMenu == IdMenu);
                     if (Entity == null)
@@ -136,7 +136,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 int ID = 1;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     var lst = from q in Context.aca_Menu
                               select q;
@@ -158,7 +158,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     aca_Menu Entity = new aca_Menu
                     {
@@ -189,7 +189,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     aca_Menu Entity = Context.aca_Menu.FirstOrDefault(q => q.IdMenu == info.IdMenu);
                     if (Entity == null) return false;
@@ -215,7 +215,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     aca_Menu Entity = Context.aca_Menu.FirstOrDefault(q => q.IdMenu == info.IdMenu);
                     if (Entity == null) return false;

@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="437637ffb7a743c0b5adb84253bc059a" Name="Diagram1">
         <EntityTypeShape EntityType="ModelGeneral.tb_empresa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelGeneral.tb_sucursal" Width="1.5" PointX="3" PointY="9.125" />
+        <AssociationConnector Association="ModelGeneral.FK_tb_sucursal_tb_empresa" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

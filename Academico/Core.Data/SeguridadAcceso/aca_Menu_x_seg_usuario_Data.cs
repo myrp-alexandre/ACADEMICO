@@ -17,7 +17,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_seg_usuario_Info> Lista;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     Lista = (from m in Context.aca_Menu
                              join me in Context.aca_Menu_x_aca_Sede
@@ -92,7 +92,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_seg_usuario_Info> Lista;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     Lista = (from m in Context.aca_Menu
                              join me in Context.aca_Menu_x_aca_Sede
@@ -136,7 +136,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     Context.Database.ExecuteSqlCommand("DELETE aca_Menu_x_seg_usuario WHERE IdEmpresa = " + IdEmpresa + " AND IdSede = " + IdSede + " AND IdUsuario = '" + IdUsuario + "'");
                 }
@@ -154,7 +154,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     foreach (var item in Lista)
                     {

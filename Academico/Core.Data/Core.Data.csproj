@@ -56,25 +56,52 @@
     <Compile Include="Base\aca_AnioLectivo.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
     </Compile>
+    <Compile Include="Base\aca_AnioLectivo_Curso_Materia.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_AnioLectivo_Curso_Paralelo.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_AnioLectivo_Jornada_Curso.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_AnioLectivo_NivelAcademico_Jornada.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_AnioLectivo_Paralelo_Profesor.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_AnioLectivo_Sede_NivelAcademico.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
     <Compile Include="Base\aca_Curso.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\aca_Jornada.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Base\aca_Menu.cs">
+    <Compile Include="Base\aca_Materia.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_MateriaGrupo.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Menu.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\aca_Menu_x_aca_Sede.cs">
-      <DependentUpon>ModelAcademico.tt</DependentUpon>
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\aca_Menu_x_seg_usuario.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_NivelAcademico.cs">
+      <DependentUpon>ModelAcademico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\aca_Paralelo.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\aca_Profesor.cs">
-      <DependentUpon>ModelAcademico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Base\aca_Seccion.cs">
       <DependentUpon>ModelAcademico.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\aca_Sede.cs">
@@ -137,7 +164,14 @@
     <Compile Include="Base\tb_empresa.cs">
       <DependentUpon>ModelGeneral.tt</DependentUpon>
     </Compile>
+    <Compile Include="Base\tb_sucursal.cs">
+      <DependentUpon>ModelGeneral.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Base\vwseg_usuario_x_aca_Sede.cs">
+      <DependentUpon>ModelSeguridadAcceso.tt</DependentUpon>
+    </Compile>
     <Compile Include="General\tb_empresa_Data.cs" />
+    <Compile Include="General\tb_sucursal_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeguridadAcceso\aca_Menu_Data.cs" />
     <Compile Include="SeguridadAcceso\aca_Menu_x_aca_Sede_Data.cs" />

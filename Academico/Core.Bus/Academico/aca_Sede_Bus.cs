@@ -1,5 +1,6 @@
 ﻿using Core.Data.Academico;
 using Core.Info.Academico;
+using DevExpress.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,55 @@ namespace Core.Bus.Academico
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public List<aca_Sede_Info> get_list_bajo_demanda(ListEditItemsRequestedByFilterConditionEventArgs args, int IdEmpresa)
+        {
+            return odata.get_list_bajo_demanda(args, IdEmpresa);
+        }
+
+        public aca_Sede_Info get_info_bajo_demanda(int IdEmpresa, ListEditItemRequestedByValueEventArgs args)
+        {
+            return odata.get_info_bajo_demanda(IdEmpresa, args);
+        }
+
+        public bool guardarDB(aca_Sede_Info info)
+        {
+            try
+            {
+                return odata.guardarDB(info);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool modificarDB(aca_Sede_Info info)
+        {
+            try
+            {
+                return odata.modificarDB(info);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool anularDB(aca_Sede_Info info)
+        {
+            try
+            {
+                return odata.anularDB(info);
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

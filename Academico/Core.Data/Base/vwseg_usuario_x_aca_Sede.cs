@@ -12,15 +12,13 @@ namespace Core.Data.Base
     using System;
     using System.Collections.Generic;
     
-    public partial class aca_Menu_x_seg_usuario
+    public partial class vwseg_usuario_x_aca_Sede
     {
-        public int IdEmpresa { get; set; }
-        public int IdSede { get; set; }
-        public int IdMenu { get; set; }
         public string IdUsuario { get; set; }
-        public string Perfil { get; set; }
-    
-        public virtual aca_Menu aca_Menu { get; set; }
-        public virtual seg_usuario seg_usuario { get; set; }
+        public int IdEmpresa { get; set; }
+        public string em_nombre { get; set; }
+        public int IdSede { get; set; }
+        public string NomSede { get; set; }
+        public string Observacion { get; set; }
     }
 }

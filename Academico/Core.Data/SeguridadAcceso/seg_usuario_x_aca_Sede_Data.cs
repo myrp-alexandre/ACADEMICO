@@ -18,7 +18,7 @@ namespace Core.Data.SeguridadAcceso
 
                 using (EntitiesSeguridadAcceso db = new EntitiesSeguridadAcceso())
                 {
-                    var lst = db.seg_usuario_x_aca_Sede.Where(q => q.IdUsuario == IdUsuario).ToList();
+                    var lst = db.vwseg_usuario_x_aca_Sede.Where(q => q.IdUsuario == IdUsuario).ToList();
 
                     int Secuencia = 1;
                     lst.ForEach(q =>
@@ -28,11 +28,13 @@ namespace Core.Data.SeguridadAcceso
                             IdEmpresa =  q.IdEmpresa,
                             IdSede = q.IdSede,
                             IdUsuario = q.IdUsuario,
+                            em_nombre = q.em_nombre,
+                            NomSede = q.NomSede,
                             Secuencia = Secuencia++
                         });
                     });
                 }
-
+                Lista.ForEach(v => { v.IdString = v.IdEmpresa.ToString("000") + v.IdSede.ToString("000"); });
                 return Lista;
             }
             catch (Exception)

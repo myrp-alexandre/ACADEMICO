@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Academico\AcademicoAreaRegistration.cs" />
+    <Compile Include="Areas\Academico\Controllers\SedeController.cs" />
     <Compile Include="Areas\Reportes\ReportesAreaRegistration.cs" />
     <Compile Include="Areas\SeguridadAcceso\Controllers\MenuController.cs" />
     <Compile Include="Areas\SeguridadAcceso\Controllers\MenuPorSedeController.cs" />
@@ -7373,9 +7374,13 @@
     <Content Include="Areas\SeguridadAcceso\Views\Usuario\Modificar.cshtml" />
     <Content Include="Areas\SeguridadAcceso\Views\Usuario\Nuevo.cshtml" />
     <Content Include="Areas\SeguridadAcceso\Views\Usuario\_CmbEmpresa_det.cshtml" />
-    <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial.cshtml" />
     <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial_usuario.cshtml" />
     <Content Include="Areas\SeguridadAcceso\Views\Usuario\_GridViewPartial_Usuario_x_Sede.cshtml" />
+    <Content Include="Areas\Academico\Views\Sede\Anular.cshtml" />
+    <Content Include="Areas\Academico\Views\Sede\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\Sede\Modificar.cshtml" />
+    <Content Include="Areas\Academico\Views\Sede\Nuevo.cshtml" />
+    <Content Include="Areas\Academico\Views\Sede\_GridViewPartial_sede.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7406,10 +7411,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\LoginEmpresa.cshtml" />
+    <Content Include="Views\Shared\_LayoutConsulta.cshtml" />
+    <Content Include="Views\Account\CambiarContrasena.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Academico\Controllers\" />
     <Folder Include="Areas\Academico\Models\" />
     <Folder Include="Areas\Academico\Views\Shared\" />
     <Folder Include="Areas\Reportes\Controllers\" />

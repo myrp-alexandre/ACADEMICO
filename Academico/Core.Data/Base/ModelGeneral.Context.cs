@@ -26,5 +26,6 @@ namespace Core.Data.Base
         }
     
         public virtual DbSet<tb_empresa> tb_empresa { get; set; }
+        public virtual DbSet<tb_sucursal> tb_sucursal { get; set; }
     }
 }

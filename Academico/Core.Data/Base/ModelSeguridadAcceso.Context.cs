@@ -25,8 +25,12 @@ namespace Core.Data.Base
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<aca_Menu> aca_Menu { get; set; }
+        public virtual DbSet<aca_Menu_x_aca_Sede> aca_Menu_x_aca_Sede { get; set; }
+        public virtual DbSet<aca_Menu_x_seg_usuario> aca_Menu_x_seg_usuario { get; set; }
         public virtual DbSet<seg_usuario> seg_usuario { get; set; }
         public virtual DbSet<seg_usuario_x_aca_Sede> seg_usuario_x_aca_Sede { get; set; }
         public virtual DbSet<seg_Usuario_x_Empresa> seg_Usuario_x_Empresa { get; set; }
+        public virtual DbSet<vwseg_usuario_x_aca_Sede> vwseg_usuario_x_aca_Sede { get; set; }
     }
 }

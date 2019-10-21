@@ -17,31 +17,16 @@ namespace Core.Data.General
 
                 using (EntitiesGeneral Context = new EntitiesGeneral())
                 {
-                    if (mostrar_anulados)
-                        Lista = (from q in Context.tb_empresa
-                                 select new tb_empresa_Info
-                                 {
-                                     IdEmpresa = q.IdEmpresa,
-                                     codigo = q.codigo,
-                                     em_nombre = q.em_nombre,
-                                     em_ruc = q.em_ruc,
-                                     Estado = q.Estado,
-                                     em_direccion = q.em_direccion,
-                                     em_telefonos = q.em_telefonos
-                                 }).ToList();
-                    else
-                        Lista = (from q in Context.tb_empresa
-                                 where q.Estado == "A"
-                                 select new tb_empresa_Info
-                                 {
-                                     IdEmpresa = q.IdEmpresa,
-                                     codigo = q.codigo,
-                                     em_nombre = q.em_nombre,
-                                     em_ruc = q.em_ruc,
-                                     Estado = q.Estado,
-                                     em_direccion = q.em_direccion,
-                                     em_telefonos = q.em_telefonos
-                                 }).ToList();
+                    Lista = Context.tb_empresa.Where(q => q.Estado == (mostrar_anulados == true ? q.Estado : "A")).Select(q => new tb_empresa_Info
+                    {
+                        IdEmpresa = q.IdEmpresa,
+                        codigo = q.codigo,
+                        em_nombre = q.em_nombre,
+                        em_ruc = q.em_ruc,
+                        Estado = q.Estado,
+                        em_direccion = q.em_direccion,
+                        em_telefonos = q.em_telefonos
+                    }).ToList();
                 }
 
                 return Lista;

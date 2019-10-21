@@ -12,11 +12,18 @@ namespace Core.Data.Base
     using System;
     using System.Collections.Generic;
     
-    public partial class aca_Seccion
+    public partial class aca_MateriaGrupo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public aca_MateriaGrupo()
+        {
+            this.aca_Materia = new HashSet<aca_Materia>();
+        }
+    
         public int IdEmpresa { get; set; }
-        public int IdSeccion { get; set; }
-        public string NomSeccion { get; set; }
+        public int IdMateriaGrupo { get; set; }
+        public string NomMateriaGrupo { get; set; }
+        public int OrdenMateriaGrupo { get; set; }
         public bool Estado { get; set; }
         public string IdUsuarioCreacion { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
@@ -25,5 +32,8 @@ namespace Core.Data.Base
         public string IdUsuarioAnulacion { get; set; }
         public Nullable<System.DateTime> FechaAnulacion { get; set; }
         public string MotivoAnulacion { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aca_Materia> aca_Materia { get; set; }
     }
 }

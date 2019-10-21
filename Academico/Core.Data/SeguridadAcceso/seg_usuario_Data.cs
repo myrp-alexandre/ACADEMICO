@@ -192,7 +192,7 @@ namespace Core.Data.SeguridadAcceso
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -260,7 +260,7 @@ namespace Core.Data.SeguridadAcceso
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

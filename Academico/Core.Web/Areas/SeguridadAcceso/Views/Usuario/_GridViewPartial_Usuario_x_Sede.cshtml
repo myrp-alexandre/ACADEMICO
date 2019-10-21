@@ -4,7 +4,7 @@
     {
         settings.Name = "GridViewPartial_Usuario_x_Sede";
         settings.CallbackRouteValues = new { Controller = "Usuario", Action = "GridViewPartial_Usuario_x_Sede" };
-        settings.KeyFieldName = "Secuencia";
+        settings.KeyFieldName = "IdString";
         settings.Width = Unit.Percentage(100);
         settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Usuario", Action = "EditingAddNew", Area = "SeguridadAcceso" };
         settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Usuario", Action = "EditingUpdate", Area = "SeguridadAcceso" };
@@ -76,7 +76,7 @@
                 p.TextField = "NomSede";
                 p.TextFormatString = "{0}";
                 p.Columns.Add("NomSede", "Sede");
-                p.ValueType = typeof(string);
+                p.ValueType = typeof(int);
                 p.BindList(ViewBag.lst_sedes);
                 p.ClientSideEvents.BeginCallback = "SedeComboBox_BeginCallback";
                 p.ClearButton.DisplayMode = ClearButtonDisplayMode.Never;

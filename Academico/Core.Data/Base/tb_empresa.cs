@@ -14,6 +14,12 @@ namespace Core.Data.Base
     
     public partial class tb_empresa
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_empresa()
+        {
+            this.tb_sucursal = new HashSet<tb_sucursal>();
+        }
+    
         public int IdEmpresa { get; set; }
         public string codigo { get; set; }
         public string em_nombre { get; set; }
@@ -32,5 +38,8 @@ namespace Core.Data.Base
         public System.DateTime em_fechaInicioActividad { get; set; }
         public string cod_entidad_dinardap { get; set; }
         public string em_Email { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_sucursal> tb_sucursal { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_aca_Sede_Info> Lista;
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     Lista = (from q in Context.aca_Menu_x_aca_Sede
                              join m in Context.aca_Menu
@@ -71,7 +71,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     Context.Database.ExecuteSqlCommand("DELETE aca_Menu_x_aca_Sede WHERE IdEmpresa = " + IdEmpresa+" and IdSede = "+ IdSede);
                 }
@@ -97,7 +97,7 @@ namespace Core.Data.SeguridadAcceso
                     IdSede = Lista.FirstOrDefault().IdSede;
                 }
 
-                using (EntitiesAcademico Context = new EntitiesAcademico())
+                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
                 {
                     foreach (var item in Lista)
                     {
