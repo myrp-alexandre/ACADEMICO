@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Core.Bus.Academico
 {
-    public class aca_Curso_Bus
+    public class aca_AnioLectivo_Bus
     {
-        aca_Curso_Data odata = new aca_Curso_Data();
-        public List<aca_Curso_Info> GetList(int IdEmpresa, bool MostrarAnulados)
+        aca_AnioLectivo_Data odata = new aca_AnioLectivo_Data();
+        public List<aca_AnioLectivo_Info> GetList(int IdEmpresa, bool MostrarAnulados)
         {
             try
             {
@@ -23,11 +23,11 @@ namespace Core.Bus.Academico
             }
         }
 
-        public aca_Curso_Info GetInfo(int IdEmpresa, int IdCurso)
+        public aca_AnioLectivo_Info GetInfo(int IdEmpresa, int IdAnio)
         {
             try
             {
-                return odata.getInfo(IdEmpresa, IdCurso);
+                return odata.getInfo(IdEmpresa, IdAnio);
             }
             catch (Exception)
             {
@@ -35,19 +35,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public int GetOrden(int IdEmpresa)
-        {
-            try
-            {
-                return odata.getOrden(IdEmpresa);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public bool GuardarDB(aca_Curso_Info info)
+        public bool GuardarDB(aca_AnioLectivo_Info info)
         {
             try
             {
@@ -60,7 +48,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public bool ModificarDB(aca_Curso_Info info)
+        public bool ModificarDB(aca_AnioLectivo_Info info)
         {
             try
             {
@@ -73,7 +61,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public bool AnularDB(aca_Curso_Info info)
+        public bool AnularDB(aca_AnioLectivo_Info info)
         {
             try
             {

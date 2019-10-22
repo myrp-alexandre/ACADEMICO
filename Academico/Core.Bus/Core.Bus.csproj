@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Academico\aca_AnioLectivo_Bus.cs" />
     <Compile Include="Academico\aca_Curso_Bus.cs" />
     <Compile Include="Academico\aca_Jornada_Bus.cs" />
+    <Compile Include="Academico\aca_MateriaGrupo_Bus.cs" />
+    <Compile Include="Academico\aca_Materia_Bus.cs" />
     <Compile Include="Academico\aca_NivelAcademico_Bus.cs" />
     <Compile Include="Academico\aca_Paralelo_Bus.cs" />
     <Compile Include="Academico\aca_Sede_Bus.cs" />

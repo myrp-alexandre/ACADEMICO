@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Core.Bus.Academico
 {
-    public class aca_Curso_Bus
+    public class aca_MateriaGrupo_Bus
     {
-        aca_Curso_Data odata = new aca_Curso_Data();
-        public List<aca_Curso_Info> GetList(int IdEmpresa, bool MostrarAnulados)
+        aca_MateriaGrupo_Data odata = new aca_MateriaGrupo_Data();
+        public List<aca_MateriaGrupo_Info> GetList(int IdEmpresa, bool MostrarAnulados)
         {
             try
             {
@@ -23,11 +23,11 @@ namespace Core.Bus.Academico
             }
         }
 
-        public aca_Curso_Info GetInfo(int IdEmpresa, int IdCurso)
+        public aca_MateriaGrupo_Info GetInfo(int IdEmpresa, int IdMateriaGrupo)
         {
             try
             {
-                return odata.getInfo(IdEmpresa, IdCurso);
+                return odata.getInfo(IdEmpresa, IdMateriaGrupo);
             }
             catch (Exception)
             {
@@ -47,7 +47,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public bool GuardarDB(aca_Curso_Info info)
+        public bool GuardarDB(aca_MateriaGrupo_Info info)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public bool ModificarDB(aca_Curso_Info info)
+        public bool ModificarDB(aca_MateriaGrupo_Info info)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Core.Bus.Academico
             }
         }
 
-        public bool AnularDB(aca_Curso_Info info)
+        public bool AnularDB(aca_MateriaGrupo_Info info)
         {
             try
             {

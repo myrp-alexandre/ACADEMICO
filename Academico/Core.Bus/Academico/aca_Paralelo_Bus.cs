@@ -23,11 +23,11 @@ namespace Core.Bus.Academico
             }
         }
 
-        public aca_Paralelo_Info GetInfo(int IdEmpresa, int IdJornada)
+        public aca_Paralelo_Info GetInfo(int IdEmpresa, int IdParalelo)
         {
             try
             {
-                return odata.getInfo(IdEmpresa, IdJornada);
+                return odata.getInfo(IdEmpresa, IdParalelo);
             }
             catch (Exception)
             {

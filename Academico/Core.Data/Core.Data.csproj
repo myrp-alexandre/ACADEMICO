@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Academico\aca_AnioLectivo_Data.cs" />
     <Compile Include="Academico\aca_Curso_Data.cs" />
     <Compile Include="Academico\aca_Jornada_Data.cs" />
+    <Compile Include="Academico\aca_MateriaGrupo_Data.cs" />
+    <Compile Include="Academico\aca_Materia_Data.cs" />
     <Compile Include="Academico\aca_NivelAcademico_Data.cs" />
     <Compile Include="Academico\aca_Paralelo_Data.cs" />
     <Compile Include="Academico\aca_Sede_Data.cs" />

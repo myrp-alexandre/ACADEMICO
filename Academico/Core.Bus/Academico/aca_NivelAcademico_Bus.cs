@@ -23,11 +23,11 @@ namespace Core.Bus.Academico
             }
         }
 
-        public aca_NivelAcademico_Info GetInfo(int IdEmpresa, int IdJornada)
+        public aca_NivelAcademico_Info GetInfo(int IdEmpresa, int IdNivel)
         {
             try
             {
-                return odata.getInfo(IdEmpresa, IdJornada);
+                return odata.getInfo(IdEmpresa, IdNivel);
             }
             catch (Exception)
             {

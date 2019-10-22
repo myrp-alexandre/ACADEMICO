@@ -1,0 +1,45 @@
+﻿@model Core.Info.Academico.aca_MateriaGrupo_Info
+@{
+    ViewBag.Title = "Modificar grupo de materia";
+
+    if (string.IsNullOrEmpty(Core.Web.Helps.SessionFixed.IdUsuario) || string.IsNullOrEmpty(Core.Web.Helps.SessionFixed.IdEmpresa))
+    {
+        Response.Redirect("~/Account/Login");
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/ValidacionBotonSubmit.js"></script>
+@using (Html.BeginForm("Modificar", "MateriaGrupo", FormMethod.Post, new { @class = "form", @role = "form" }))
+{
+    @Html.HiddenFor(q => q.IdEmpresa)
+    @Html.HiddenFor(q => q.IdMateriaGrupo)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="IdSucursal">Grupo*</label>
+                    @Html.TextBoxFor(q => q.NomMateriaGrupo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NomMateriaGrupo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Sede">Orden*</label>
+                    @Html.TextBoxFor(q => q.OrdenMateriaGrupo, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.OrdenMateriaGrupo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-default" href="@Url.Action("Index","MateriaGrupo",new { Area = "Academico" },null)">Cancelar</a>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+}
