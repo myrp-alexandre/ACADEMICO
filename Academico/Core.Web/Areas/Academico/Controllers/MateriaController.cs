@@ -54,6 +54,7 @@ namespace Core.Web.Areas.Academico.Controllers
         {
             int IdEmpresa = Convert.ToInt32(SessionFixed.IdEmpresa);
             var lst_grupos = bus_grupo.GetList(IdEmpresa, false);
+            lst_grupos.Add(new aca_MateriaGrupo_Info { IdMateriaGrupo=0, NomMateriaGrupo="" });
             ViewBag.lst_grupos = lst_grupos;
         }
         #endregion

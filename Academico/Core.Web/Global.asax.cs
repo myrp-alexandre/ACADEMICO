@@ -18,6 +18,7 @@ namespace Core.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SessionFixed.SetSessionValueProvider(new WebSessionValueProvider());
+            ModelBinders.Binders.DefaultBinder = new DevExpress.Web.Mvc.DevExpressEditorsBinder();
         }
     }
 }

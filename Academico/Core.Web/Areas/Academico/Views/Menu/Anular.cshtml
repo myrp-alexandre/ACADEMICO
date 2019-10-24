@@ -1,15 +1,15 @@
-﻿@model Core.Info.SeguridadAcceso.aca_Menu_Info
+﻿@model Core.Info.Academico.aca_Menu_Info
 @{
-    ViewBag.Title = "Modificar menú";
-    //if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
-    //{
-    //    Response.Redirect("~/Account/Login");
-    //}
+    ViewBag.Title = "Anular menú";
+    if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script src="~/Scripts/ValidacionBotonSubmit.js"></script>
 
-@using (Html.BeginForm("Modificar", "Menu", FormMethod.Post, new { @role = "form", @class = "form" }))
+@using (Html.BeginForm("Anular", "Menu", FormMethod.Post, new { @role = "form", @class = "form" }))
 {
     @Html.HiddenFor(q => q.IdMenu)
 
@@ -72,7 +72,7 @@
     </div>
 
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-danger">Anular</button>
         <a class="btn btn-default" href="@Url.Action("Index","Menu",new { Area = "Academico" },null)">Cancelar</a>
     </div>
     @section Scripts {

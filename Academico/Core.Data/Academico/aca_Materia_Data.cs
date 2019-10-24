@@ -136,6 +136,7 @@ namespace Core.Data.Academico
                         IdEmpresa = info.IdEmpresa,
                         IdMateria = info.IdMateria = getId(info.IdEmpresa),
                         NomMateria = info.NomMateria,
+                        IdMateriaGrupo = (info.IdMateriaGrupo==0 ? null : info.IdMateriaGrupo),
                         OrdenMateria = info.OrdenMateria,
                         EsObligatorio = info.EsObligatorio,
                         Estado = true,
@@ -167,6 +168,7 @@ namespace Core.Data.Academico
                     Entity.IdEmpresa = info.IdEmpresa;
                     Entity.NomMateria = info.NomMateria;
                     Entity.OrdenMateria = info.OrdenMateria;
+                    Entity.IdMateriaGrupo = (info.IdMateriaGrupo == 0 ? null : info.IdMateriaGrupo);
                     Entity.EsObligatorio = info.EsObligatorio;
                     Entity.IdUsuarioModificacion = info.IdUsuarioModificacion;
                     Entity.FechaModificacion = info.FechaModificacion = DateTime.Now;

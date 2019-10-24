@@ -35,6 +35,18 @@ namespace Core.Bus.Academico
             }
         }
 
+        public aca_AnioLectivo_Info GetInfo_AnioEnCurso(int IdEmpresa, int IdAnio)
+        {
+            try
+            {
+                return odata.getInfo_AnioEnCurso(IdEmpresa, IdAnio);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public bool GuardarDB(aca_AnioLectivo_Info info)
         {
             try

@@ -17,7 +17,6 @@ namespace Core.Data.Base
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public seg_usuario()
         {
-            this.aca_Menu_x_seg_usuario = new HashSet<aca_Menu_x_seg_usuario>();
             this.seg_usuario_x_aca_Sede = new HashSet<seg_usuario_x_aca_Sede>();
             this.seg_Usuario_x_Empresa = new HashSet<seg_Usuario_x_Empresa>();
         }
@@ -41,8 +40,6 @@ namespace Core.Data.Base
         public string IPUsuario { get; set; }
         public string IPImpresora { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<aca_Menu_x_seg_usuario> aca_Menu_x_seg_usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<seg_usuario_x_aca_Sede> seg_usuario_x_aca_Sede { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

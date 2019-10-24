@@ -211,6 +211,44 @@
           <Property Name="FechaAnulacion" Type="datetime" />
           <Property Name="MotivoAnulacion" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="aca_Menu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+          <Property Name="IdMenuPadre" Type="int" />
+          <Property Name="DescripcionMenu" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PosicionMenu" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="nivel" Type="int" />
+          <Property Name="web_nom_Area" Type="varchar" MaxLength="200" />
+          <Property Name="web_nom_Controller" Type="varchar" MaxLength="200" />
+          <Property Name="web_nom_Action" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="aca_Menu_x_aca_Sede">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdSede" Type="int" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="aca_Menu_x_seg_usuario">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+            <PropertyRef Name="IdMenu" />
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdSede" Type="int" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Perfil" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="aca_NivelAcademico">
           <Key>
             <PropertyRef Name="IdEmpresa" />
@@ -763,6 +801,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Menu">
+          <End Role="aca_Menu" Type="Self.aca_Menu" Multiplicity="1" />
+          <End Role="aca_Menu_x_aca_Sede" Type="Self.aca_Menu_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Menu">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_aca_Sede">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Sede">
+          <End Role="aca_Sede" Type="Self.aca_Sede" Multiplicity="1" />
+          <End Role="aca_Menu_x_aca_Sede" Type="Self.aca_Menu_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Menu">
+          <End Role="aca_Menu" Type="Self.aca_Menu" Multiplicity="1" />
+          <End Role="aca_Menu_x_seg_usuario" Type="Self.aca_Menu_x_seg_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Menu">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_seg_usuario">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Sede">
+          <End Role="aca_Sede" Type="Self.aca_Sede" Multiplicity="1" />
+          <End Role="aca_Menu_x_seg_usuario" Type="Self.aca_Menu_x_seg_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_seg_usuario">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="spaca_corregir_menu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdEmpresa" Type="int" Mode="In" />
           <Parameter Name="IdSede" Type="int" Mode="In" />
@@ -780,6 +870,9 @@
           <EntitySet Name="aca_Jornada" EntityType="Self.aca_Jornada" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_Materia" EntityType="Self.aca_Materia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_MateriaGrupo" EntityType="Self.aca_MateriaGrupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aca_Menu" EntityType="Self.aca_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aca_Menu_x_aca_Sede" EntityType="Self.aca_Menu_x_aca_Sede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aca_Menu_x_seg_usuario" EntityType="Self.aca_Menu_x_seg_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_NivelAcademico" EntityType="Self.aca_NivelAcademico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_Paralelo" EntityType="Self.aca_Paralelo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aca_Profesor" EntityType="Self.aca_Profesor" Schema="dbo" store:Type="Tables" />
@@ -919,6 +1012,22 @@
           <AssociationSet Name="FK_aca_Materia_aca_MateriaGrupo" Association="Self.FK_aca_Materia_aca_MateriaGrupo">
             <End Role="aca_MateriaGrupo" EntitySet="aca_MateriaGrupo" />
             <End Role="aca_Materia" EntitySet="aca_Materia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Menu" Association="Self.FK_aca_Menu_x_aca_Sede_aca_Menu">
+            <End Role="aca_Menu" EntitySet="aca_Menu" />
+            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Sede" Association="Self.FK_aca_Menu_x_aca_Sede_aca_Sede">
+            <End Role="aca_Sede" EntitySet="aca_Sede" />
+            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Menu" Association="Self.FK_aca_Menu_x_seg_usuario_aca_Menu">
+            <End Role="aca_Menu" EntitySet="aca_Menu" />
+            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Sede" Association="Self.FK_aca_Menu_x_seg_usuario_aca_Sede">
+            <End Role="aca_Sede" EntitySet="aca_Sede" />
+            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1081,6 +1190,25 @@
           <AssociationSet Name="FK_aca_Materia_aca_MateriaGrupo" Association="ModelAcademico.FK_aca_Materia_aca_MateriaGrupo">
             <End Role="aca_MateriaGrupo" EntitySet="aca_MateriaGrupo" />
             <End Role="aca_Materia" EntitySet="aca_Materia" />
+          </AssociationSet>
+          <EntitySet Name="aca_Menu" EntityType="ModelAcademico.aca_Menu" />
+          <EntitySet Name="aca_Menu_x_aca_Sede" EntityType="ModelAcademico.aca_Menu_x_aca_Sede" />
+          <EntitySet Name="aca_Menu_x_seg_usuario" EntityType="ModelAcademico.aca_Menu_x_seg_usuario" />
+          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Menu" Association="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Menu">
+            <End Role="aca_Menu" EntitySet="aca_Menu" />
+            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Menu" Association="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Menu">
+            <End Role="aca_Menu" EntitySet="aca_Menu" />
+            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Sede" Association="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Sede">
+            <End Role="aca_Sede" EntitySet="aca_Sede" />
+            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Sede" Association="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Sede">
+            <End Role="aca_Sede" EntitySet="aca_Sede" />
+            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="aca_AnioLectivo">
@@ -1432,6 +1560,8 @@
           <NavigationProperty Name="aca_AnioLectivo_NivelAcademico_Jornada" Relationship="ModelAcademico.FK_aca_AnioLectivo_NivelAcademico_Jornada_aca_Sede" FromRole="aca_Sede" ToRole="aca_AnioLectivo_NivelAcademico_Jornada" />
           <NavigationProperty Name="aca_AnioLectivo_Paralelo_Profesor" Relationship="ModelAcademico.FK_aca_AnioLectivo_Paralelo_Profesor_aca_Sede" FromRole="aca_Sede" ToRole="aca_AnioLectivo_Paralelo_Profesor" />
           <NavigationProperty Name="aca_AnioLectivo_Sede_NivelAcademico" Relationship="ModelAcademico.FK_aca_AnioLectivo_Sede_NivelAcademico_aca_Sede" FromRole="aca_Sede" ToRole="aca_AnioLectivo_Sede_NivelAcademico" />
+          <NavigationProperty Name="aca_Menu_x_aca_Sede" Relationship="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Sede" FromRole="aca_Sede" ToRole="aca_Menu_x_aca_Sede" />
+          <NavigationProperty Name="aca_Menu_x_seg_usuario" Relationship="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Sede" FromRole="aca_Sede" ToRole="aca_Menu_x_seg_usuario" />
         </EntityType>
         <Association Name="FK_aca_AnioLectivo_Curso_Materia_aca_AnioLectivo">
           <End Type="ModelAcademico.aca_AnioLectivo" Role="aca_AnioLectivo" Multiplicity="1" />
@@ -1909,6 +2039,102 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="aca_Menu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="IdMenuPadre" Type="Int32" />
+          <Property Name="DescripcionMenu" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PosicionMenu" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="nivel" Type="Int32" />
+          <Property Name="web_nom_Area" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="web_nom_Controller" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="web_nom_Action" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aca_Menu_x_aca_Sede" Relationship="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Menu" FromRole="aca_Menu" ToRole="aca_Menu_x_aca_Sede" />
+          <NavigationProperty Name="aca_Menu_x_seg_usuario" Relationship="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Menu" FromRole="aca_Menu" ToRole="aca_Menu_x_seg_usuario" />
+        </EntityType>
+        <EntityType Name="aca_Menu_x_aca_Sede">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdSede" Type="Int32" Nullable="false" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aca_Menu" Relationship="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Menu" FromRole="aca_Menu_x_aca_Sede" ToRole="aca_Menu" />
+          <NavigationProperty Name="aca_Sede" Relationship="ModelAcademico.FK_aca_Menu_x_aca_Sede_aca_Sede" FromRole="aca_Menu_x_aca_Sede" ToRole="aca_Sede" />
+        </EntityType>
+        <EntityType Name="aca_Menu_x_seg_usuario">
+          <Key>
+            <PropertyRef Name="IdEmpresa" />
+            <PropertyRef Name="IdSede" />
+            <PropertyRef Name="IdMenu" />
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdSede" Type="Int32" Nullable="false" />
+          <Property Name="IdMenu" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Perfil" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aca_Menu" Relationship="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Menu" FromRole="aca_Menu_x_seg_usuario" ToRole="aca_Menu" />
+          <NavigationProperty Name="aca_Sede" Relationship="ModelAcademico.FK_aca_Menu_x_seg_usuario_aca_Sede" FromRole="aca_Menu_x_seg_usuario" ToRole="aca_Sede" />
+        </EntityType>
+        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Menu">
+          <End Type="ModelAcademico.aca_Menu" Role="aca_Menu" Multiplicity="1" />
+          <End Type="ModelAcademico.aca_Menu_x_aca_Sede" Role="aca_Menu_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Menu">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_aca_Sede">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Menu">
+          <End Type="ModelAcademico.aca_Menu" Role="aca_Menu" Multiplicity="1" />
+          <End Type="ModelAcademico.aca_Menu_x_seg_usuario" Role="aca_Menu_x_seg_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Menu">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_seg_usuario">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Sede">
+          <End Type="ModelAcademico.aca_Sede" Role="aca_Sede" Multiplicity="1" />
+          <End Type="ModelAcademico.aca_Menu_x_aca_Sede" Role="aca_Menu_x_aca_Sede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Sede">
+          <End Type="ModelAcademico.aca_Sede" Role="aca_Sede" Multiplicity="1" />
+          <End Type="ModelAcademico.aca_Menu_x_seg_usuario" Role="aca_Menu_x_seg_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aca_Sede">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Principal>
+            <Dependent Role="aca_Menu_x_seg_usuario">
+              <PropertyRef Name="IdEmpresa" />
+              <PropertyRef Name="IdSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2168,6 +2394,42 @@
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="NomSede" ColumnName="NomSede" />
                 <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aca_Menu">
+            <EntityTypeMapping TypeName="ModelAcademico.aca_Menu">
+              <MappingFragment StoreEntitySet="aca_Menu">
+                <ScalarProperty Name="web_nom_Action" ColumnName="web_nom_Action" />
+                <ScalarProperty Name="web_nom_Controller" ColumnName="web_nom_Controller" />
+                <ScalarProperty Name="web_nom_Area" ColumnName="web_nom_Area" />
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PosicionMenu" ColumnName="PosicionMenu" />
+                <ScalarProperty Name="DescripcionMenu" ColumnName="DescripcionMenu" />
+                <ScalarProperty Name="IdMenuPadre" ColumnName="IdMenuPadre" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aca_Menu_x_aca_Sede">
+            <EntityTypeMapping TypeName="ModelAcademico.aca_Menu_x_aca_Sede">
+              <MappingFragment StoreEntitySet="aca_Menu_x_aca_Sede">
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aca_Menu_x_seg_usuario">
+            <EntityTypeMapping TypeName="ModelAcademico.aca_Menu_x_seg_usuario">
+              <MappingFragment StoreEntitySet="aca_Menu_x_seg_usuario">
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
                 <ScalarProperty Name="IdSede" ColumnName="IdSede" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
               </MappingFragment>

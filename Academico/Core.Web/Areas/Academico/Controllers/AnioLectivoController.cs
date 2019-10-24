@@ -14,6 +14,7 @@ namespace Core.Web.Areas.Academico.Controllers
         #region Variables
         aca_AnioLectivo_Bus bus_anio = new aca_AnioLectivo_Bus();
         aca_AnioLectivo_List Lista_AnioLectivo = new aca_AnioLectivo_List();
+        string mensaje = string.Empty;
         #endregion
 
         #region Index
@@ -48,6 +49,23 @@ namespace Core.Web.Areas.Academico.Controllers
         }
         #endregion
 
+        #region Metodos
+        private bool validar(aca_AnioLectivo_Info info, ref string msg)
+        {
+            if (info.EnCurso== true)
+            {
+                var AnioEnCurso = bus_anio.GetInfo_AnioEnCurso(info.IdEmpresa, info.IdAnio);
+                if (AnioEnCurso != null)
+                {
+                    msg = "Ya existe un año lectivo en curso";
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        #endregion
+
         #region Acciones
         public ActionResult Nuevo(int IdEmpresa = 0)
         {
@@ -71,6 +89,12 @@ namespace Core.Web.Areas.Academico.Controllers
         public ActionResult Nuevo(aca_AnioLectivo_Info model)
         {
             model.IdUsuarioCreacion = SessionFixed.IdUsuario;
+
+            if (!validar(model, ref mensaje))
+            {
+                ViewBag.mensaje = mensaje;
+                return View(model);
+            }
 
             if (!bus_anio.GuardarDB(model))
             {
@@ -98,6 +122,13 @@ namespace Core.Web.Areas.Academico.Controllers
         public ActionResult Modificar(aca_AnioLectivo_Info model)
         {
             model.IdUsuarioModificacion = SessionFixed.IdUsuario;
+
+            if (!validar(model, ref mensaje))
+            {
+                ViewBag.mensaje = mensaje;
+                return View(model);
+            }
+
             if (!bus_anio.ModificarDB(model))
             {
                 return View(model);

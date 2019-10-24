@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Info.SeguridadAcceso
+namespace Core.Info.Academico
 {
     public class aca_Menu_x_aca_Sede_Info
     {

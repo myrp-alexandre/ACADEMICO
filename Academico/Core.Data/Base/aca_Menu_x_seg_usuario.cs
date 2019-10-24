@@ -21,6 +21,6 @@ namespace Core.Data.Base
         public string Perfil { get; set; }
     
         public virtual aca_Menu aca_Menu { get; set; }
-        public virtual seg_usuario seg_usuario { get; set; }
+        public virtual aca_Sede aca_Sede { get; set; }
     }
 }

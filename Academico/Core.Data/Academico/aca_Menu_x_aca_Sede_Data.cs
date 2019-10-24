@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.SeguridadAcceso
+namespace Core.Data.Academico
 {
     public class aca_Menu_x_aca_Sede_Data
     {
@@ -17,7 +17,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_aca_Sede_Info> Lista;
 
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     Lista = (from q in Context.aca_Menu_x_aca_Sede
                              join m in Context.aca_Menu
@@ -71,7 +71,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     Context.Database.ExecuteSqlCommand("DELETE aca_Menu_x_aca_Sede WHERE IdEmpresa = " + IdEmpresa+" and IdSede = "+ IdSede);
                 }
@@ -97,7 +97,7 @@ namespace Core.Data.SeguridadAcceso
                     IdSede = Lista.FirstOrDefault().IdSede;
                 }
 
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     foreach (var item in Lista)
                     {

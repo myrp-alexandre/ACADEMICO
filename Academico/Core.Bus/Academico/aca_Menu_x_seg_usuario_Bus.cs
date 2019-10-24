@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Bus.SeguridadAcceso
+namespace Core.Bus.Academico
 {
     public class aca_Menu_x_seg_usuario_Bus
     {

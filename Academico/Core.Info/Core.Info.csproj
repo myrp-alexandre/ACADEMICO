@@ -42,10 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academico\aca_AnioLectivo_Info.cs" />
+    <Compile Include="Academico\aca_AnioLectivo_Jornada_Curso_Info.cs" />
+    <Compile Include="Academico\aca_AnioLectivo_NivelAcademico_Jornada_Info.cs" />
+    <Compile Include="Academico\aca_AnioLectivo_Sede_NivelAcademico_Info.cs" />
     <Compile Include="Academico\aca_Curso_Info.cs" />
     <Compile Include="Academico\aca_Jornada_Info.cs" />
     <Compile Include="Academico\aca_MateriaGrupo_Info.cs" />
     <Compile Include="Academico\aca_Materia_Info.cs" />
+    <Compile Include="Academico\aca_Menu_Info.cs" />
+    <Compile Include="Academico\aca_Menu_x_aca_Sede_Info.cs" />
+    <Compile Include="Academico\aca_Menu_x_seg_usuario_Info.cs" />
     <Compile Include="Academico\aca_NivelAcademico_Info.cs" />
     <Compile Include="Academico\aca_Paralelo_Info.cs" />
     <Compile Include="Academico\aca_Sede_Info.cs" />
@@ -54,9 +60,6 @@
     <Compile Include="Helps\cl_filtros_Info.cs" />
     <Compile Include="Helps\cl_funciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeguridadAcceso\aca_Menu_Info.cs" />
-    <Compile Include="SeguridadAcceso\aca_Menu_x_aca_Sede_Info.cs" />
-    <Compile Include="SeguridadAcceso\aca_Menu_x_seg_usuario_Info.cs" />
     <Compile Include="SeguridadAcceso\seg_usuario_Info.cs" />
     <Compile Include="SeguridadAcceso\seg_usuario_x_aca_Sede_Info.cs" />
   </ItemGroup>

@@ -12,6 +12,12 @@ namespace Core.Info.Helps
         public decimal IdTransaccionSession { get; set; }
         public int IdEmpresa { get; set; }
         public int IdSucursal { get; set; }
+        public int IdSede { get; set; }
+        public int IdAnio { get; set; }
+        public int IdNivel { get; set; }
+        public int IdJornada { get; set; }
+        public int IdCurso { get; set; }
+        public int IdParalelo { get; set; }
         [Required(ErrorMessage = "El campo fecha inicio es obligatorio")]
         [DataType(DataType.Date, ErrorMessage = "El campo fecha inicio debe ser una fecha en formato dd/MM/yyyy")]
         public DateTime fecha_ini { get; set; }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Data.SeguridadAcceso
+namespace Core.Data.Academico
 {
     public class aca_Menu_x_seg_usuario_Data
     {
@@ -17,7 +17,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_seg_usuario_Info> Lista;
 
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     Lista = (from m in Context.aca_Menu
                              join me in Context.aca_Menu_x_aca_Sede
@@ -92,7 +92,7 @@ namespace Core.Data.SeguridadAcceso
             {
                 List<aca_Menu_x_seg_usuario_Info> Lista;
 
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     Lista = (from m in Context.aca_Menu
                              join me in Context.aca_Menu_x_aca_Sede
@@ -136,7 +136,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     Context.Database.ExecuteSqlCommand("DELETE aca_Menu_x_seg_usuario WHERE IdEmpresa = " + IdEmpresa + " AND IdSede = " + IdSede + " AND IdUsuario = '" + IdUsuario + "'");
                 }
@@ -154,7 +154,7 @@ namespace Core.Data.SeguridadAcceso
         {
             try
             {
-                using (EntitiesSeguridadAcceso Context = new EntitiesSeguridadAcceso())
+                using (EntitiesAcademico Context = new EntitiesAcademico())
                 {
                     foreach (var item in Lista)
                     {

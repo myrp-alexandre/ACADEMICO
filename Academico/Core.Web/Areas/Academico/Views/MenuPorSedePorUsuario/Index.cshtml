@@ -1,6 +1,6 @@
-﻿@model Core.Info.SeguridadAcceso.aca_Menu_x_aca_Sede_Info
+﻿@model Core.Info.Academico.aca_Menu_x_seg_usuario_Info
 @{
-    ViewBag.Title = "Consulta de menú por sede";
+    ViewBag.Title = "Consulta de menú por sede por usuario";
     if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
     {
         Response.Redirect("~/Account/Login");
@@ -9,29 +9,31 @@
 }
 <script>
     var selectedIDs;
-
     function OnBeginCallback(s, e) {
         //Pass all selected keys to GridView callback action
         e.customArgs["selectedIDs"] = selectedIDs;
     }
     function OnSelectionChanged(s, e) {
+        $("#modificado").val("1");
         s.GetSelectedNodeValues("IdMenu", GetSelectedNodeValuesCallback);
     }
     function GetSelectedNodeValuesCallback(values) {
-        //Capture all selected keys
         selectedIDs = values.join(',');
     }
+
     function guardar() {
         var datos = {
             IdEmpresa: $("#IdEmpresa").val(),
             IdSede: $("#IdSede").val(),
+            IdUsuario: $("#IdUsuario").val(),
+            Modificado: $("#modificado").val(),
             IDs: selectedIDs
         }
         $("#btn_guardar").attr("disabled", true);
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("guardar", "MenuPorSede", new { Area = "SeguridadAcceso" })',
+            url: '@Url.Action("guardar", "MenuPorSedePorUsuario", new { Area = "Academico" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,
@@ -44,22 +46,29 @@
             }
         });
     }
-</script>
 
-@using (Html.BeginForm("Index", "MenuPorSede", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
+</script>
+@using (Html.BeginForm("Index", "MenuPorSedePorUsuario", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
 {
+    @Html.HiddenFor(q => q.modificado, new { @id= "modificado" })
     <div class="row">
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="IdEmpresa">Empresa</label>
                     @Html.DropDownListFor(q => q.IdEmpresa, new SelectList(ViewBag.lst_empresas, "IdEmpresa", "em_nombre"), new { @class = "form-control", @id = "IdEmpresa" })
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="IdEmpresa">Sede</label>
                     @Html.DropDownListFor(q => q.IdSede, new SelectList(ViewBag.lst_sedes, "IdSede", "NomSede"), new { @class = "form-control", @id = "IdSede" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="IdUsuario">Usuario</label>
+                    @Html.DropDownListFor(q => q.IdUsuario, new SelectList(ViewBag.lst_usuario, "IdUsuario", "Nombre"), new { @class = "form-control", @id = "IdUsuario" })
                 </div>
             </div>
         </div>
@@ -71,6 +80,6 @@
     </div>
 
 
-    @Html.Action("TreeListPartial_menu_x_sede", new { IdEmpresa = Model.IdEmpresa, IdSede = Model.IdSede })
+    @Html.Action("TreeListPartial_menu_x_usuario", new { IdEmpresa = Model.IdEmpresa, IdSede = Model.IdSede, IdUsuario = Model.IdUsuario })
 
 }

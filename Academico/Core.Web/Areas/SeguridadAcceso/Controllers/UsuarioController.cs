@@ -300,7 +300,7 @@ namespace Core.Web.Areas.SeguridadAcceso.Controllers
 
         public void UpdateRow(seg_usuario_x_aca_Sede_Info info_det, decimal IdTransaccionSession)
         {
-            seg_usuario_x_aca_Sede_Info edited_info = get_list(IdTransaccionSession).Where(m => m.Secuencia == info_det.Secuencia).First();
+            seg_usuario_x_aca_Sede_Info edited_info = get_list(IdTransaccionSession).Where(m => m.IdString == info_det.IdString).First();
             edited_info.IdUsuario = info_det.IdUsuario;
             edited_info.IdSede = info_det.IdSede;
             edited_info.IdEmpresa = info_det.IdEmpresa;

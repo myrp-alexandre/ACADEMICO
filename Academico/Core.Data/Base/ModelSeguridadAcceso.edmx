@@ -5,44 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ModelSeguridadAcceso.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="aca_Menu">
-          <Key>
-            <PropertyRef Name="IdMenu" />
-          </Key>
-          <Property Name="IdMenu" Type="int" Nullable="false" />
-          <Property Name="IdMenuPadre" Type="int" />
-          <Property Name="DescripcionMenu" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="PosicionMenu" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
-          <Property Name="nivel" Type="int" />
-          <Property Name="web_nom_Area" Type="varchar" MaxLength="200" />
-          <Property Name="web_nom_Controller" Type="varchar" MaxLength="200" />
-          <Property Name="web_nom_Action" Type="varchar" MaxLength="300" />
-        </EntityType>
-        <EntityType Name="aca_Menu_x_aca_Sede">
-          <Key>
-            <PropertyRef Name="IdEmpresa" />
-            <PropertyRef Name="IdSede" />
-            <PropertyRef Name="IdMenu" />
-          </Key>
-          <Property Name="IdEmpresa" Type="int" Nullable="false" />
-          <Property Name="IdSede" Type="int" Nullable="false" />
-          <Property Name="IdMenu" Type="int" Nullable="false" />
-          <Property Name="Observacion" Type="varchar" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="aca_Menu_x_seg_usuario">
-          <Key>
-            <PropertyRef Name="IdEmpresa" />
-            <PropertyRef Name="IdSede" />
-            <PropertyRef Name="IdMenu" />
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdEmpresa" Type="int" Nullable="false" />
-          <Property Name="IdSede" Type="int" Nullable="false" />
-          <Property Name="IdMenu" Type="int" Nullable="false" />
-          <Property Name="IdUsuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Perfil" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
         <EntityType Name="seg_usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -103,42 +65,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
           <Property Name="NomSede" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Observacion" Type="varchar" MaxLength="1" />
         </EntityType>
-        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Menu">
-          <End Role="aca_Menu" Type="Self.aca_Menu" Multiplicity="1" />
-          <End Role="aca_Menu_x_aca_Sede" Type="Self.aca_Menu_x_aca_Sede" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aca_Menu">
-              <PropertyRef Name="IdMenu" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_aca_Sede">
-              <PropertyRef Name="IdMenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Menu">
-          <End Role="aca_Menu" Type="Self.aca_Menu" Multiplicity="1" />
-          <End Role="aca_Menu_x_seg_usuario" Type="Self.aca_Menu_x_seg_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aca_Menu">
-              <PropertyRef Name="IdMenu" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_seg_usuario">
-              <PropertyRef Name="IdMenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aca_Menu_x_seg_usuario_seg_usuario">
-          <End Role="seg_usuario" Type="Self.seg_usuario" Multiplicity="1" />
-          <End Role="aca_Menu_x_seg_usuario" Type="Self.aca_Menu_x_seg_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="seg_usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_seg_usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_seg_usuario_x_aca_Sede_seg_usuario">
           <End Role="seg_usuario" Type="Self.seg_usuario" Multiplicity="1" />
           <End Role="seg_usuario_x_aca_Sede" Type="Self.seg_usuario_x_aca_Sede" Multiplicity="*" />
@@ -164,9 +90,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelSeguridadAccesoStoreContainer">
-          <EntitySet Name="aca_Menu" EntityType="Self.aca_Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aca_Menu_x_aca_Sede" EntityType="Self.aca_Menu_x_aca_Sede" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="aca_Menu_x_seg_usuario" EntityType="Self.aca_Menu_x_seg_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seg_usuario" EntityType="Self.seg_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seg_usuario_x_aca_Sede" EntityType="Self.seg_usuario_x_aca_Sede" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seg_Usuario_x_Empresa" EntityType="Self.seg_Usuario_x_Empresa" Schema="dbo" store:Type="Tables" />
@@ -180,18 +103,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
     [vwseg_usuario_x_aca_Sede].[Observacion] AS [Observacion]
     FROM [dbo].[vwseg_usuario_x_aca_Sede] AS [vwseg_usuario_x_aca_Sede]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Menu" Association="Self.FK_aca_Menu_x_aca_Sede_aca_Menu">
-            <End Role="aca_Menu" EntitySet="aca_Menu" />
-            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
-          </AssociationSet>
-          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Menu" Association="Self.FK_aca_Menu_x_seg_usuario_aca_Menu">
-            <End Role="aca_Menu" EntitySet="aca_Menu" />
-            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_seg_usuario" Association="Self.FK_aca_Menu_x_seg_usuario_seg_usuario">
-            <End Role="seg_usuario" EntitySet="seg_usuario" />
-            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
-          </AssociationSet>
           <AssociationSet Name="FK_seg_usuario_x_aca_Sede_seg_usuario" Association="Self.FK_seg_usuario_x_aca_Sede_seg_usuario">
             <End Role="seg_usuario" EntitySet="seg_usuario" />
             <End Role="seg_usuario_x_aca_Sede" EntitySet="seg_usuario_x_aca_Sede" />
@@ -206,23 +117,8 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
     <edmx:ConceptualModels>
       <Schema Namespace="ModelSeguridadAcceso" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="EntitiesSeguridadAcceso" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="aca_Menu" EntityType="ModelSeguridadAcceso.aca_Menu" />
-          <EntitySet Name="aca_Menu_x_aca_Sede" EntityType="ModelSeguridadAcceso.aca_Menu_x_aca_Sede" />
-          <EntitySet Name="aca_Menu_x_seg_usuario" EntityType="ModelSeguridadAcceso.aca_Menu_x_seg_usuario" />
           <EntitySet Name="seg_usuario" EntityType="ModelSeguridadAcceso.seg_usuario" />
           <EntitySet Name="seg_usuario_x_aca_Sede" EntityType="ModelSeguridadAcceso.seg_usuario_x_aca_Sede" />
-          <AssociationSet Name="FK_aca_Menu_x_aca_Sede_aca_Menu" Association="ModelSeguridadAcceso.FK_aca_Menu_x_aca_Sede_aca_Menu">
-            <End Role="aca_Menu" EntitySet="aca_Menu" />
-            <End Role="aca_Menu_x_aca_Sede" EntitySet="aca_Menu_x_aca_Sede" />
-          </AssociationSet>
-          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_aca_Menu" Association="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_aca_Menu">
-            <End Role="aca_Menu" EntitySet="aca_Menu" />
-            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_aca_Menu_x_seg_usuario_seg_usuario" Association="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_seg_usuario">
-            <End Role="seg_usuario" EntitySet="seg_usuario" />
-            <End Role="aca_Menu_x_seg_usuario" EntitySet="aca_Menu_x_seg_usuario" />
-          </AssociationSet>
           <AssociationSet Name="FK_seg_usuario_x_aca_Sede_seg_usuario" Association="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario">
             <End Role="seg_usuario" EntitySet="seg_usuario" />
             <End Role="seg_usuario_x_aca_Sede" EntitySet="seg_usuario_x_aca_Sede" />
@@ -234,49 +130,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
           </AssociationSet>
           <EntitySet Name="vwseg_usuario_x_aca_Sede" EntityType="ModelSeguridadAcceso.vwseg_usuario_x_aca_Sede" />
         </EntityContainer>
-        <EntityType Name="aca_Menu">
-          <Key>
-            <PropertyRef Name="IdMenu" />
-          </Key>
-          <Property Name="IdMenu" Type="Int32" Nullable="false" />
-          <Property Name="IdMenuPadre" Type="Int32" />
-          <Property Name="DescripcionMenu" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="PosicionMenu" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="nivel" Type="Int32" />
-          <Property Name="web_nom_Area" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="web_nom_Controller" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="web_nom_Action" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aca_Menu_x_aca_Sede" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_aca_Sede_aca_Menu" FromRole="aca_Menu" ToRole="aca_Menu_x_aca_Sede" />
-          <NavigationProperty Name="aca_Menu_x_seg_usuario" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_aca_Menu" FromRole="aca_Menu" ToRole="aca_Menu_x_seg_usuario" />
-        </EntityType>
-        <EntityType Name="aca_Menu_x_aca_Sede">
-          <Key>
-            <PropertyRef Name="IdEmpresa" />
-            <PropertyRef Name="IdSede" />
-            <PropertyRef Name="IdMenu" />
-          </Key>
-          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
-          <Property Name="IdSede" Type="Int32" Nullable="false" />
-          <Property Name="IdMenu" Type="Int32" Nullable="false" />
-          <Property Name="Observacion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aca_Menu" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_aca_Sede_aca_Menu" FromRole="aca_Menu_x_aca_Sede" ToRole="aca_Menu" />
-        </EntityType>
-        <EntityType Name="aca_Menu_x_seg_usuario">
-          <Key>
-            <PropertyRef Name="IdEmpresa" />
-            <PropertyRef Name="IdSede" />
-            <PropertyRef Name="IdMenu" />
-            <PropertyRef Name="IdUsuario" />
-          </Key>
-          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
-          <Property Name="IdSede" Type="Int32" Nullable="false" />
-          <Property Name="IdMenu" Type="Int32" Nullable="false" />
-          <Property Name="IdUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Perfil" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aca_Menu" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_aca_Menu" FromRole="aca_Menu_x_seg_usuario" ToRole="aca_Menu" />
-          <NavigationProperty Name="seg_usuario" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_seg_usuario" FromRole="aca_Menu_x_seg_usuario" ToRole="seg_usuario" />
-        </EntityType>
         <EntityType Name="seg_usuario">
           <Key>
             <PropertyRef Name="IdUsuario" />
@@ -299,7 +152,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
           <Property Name="IdMenu" Type="Int32" />
           <Property Name="IPUsuario" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="IPImpresora" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="aca_Menu_x_seg_usuario" Relationship="ModelSeguridadAcceso.FK_aca_Menu_x_seg_usuario_seg_usuario" FromRole="seg_usuario" ToRole="aca_Menu_x_seg_usuario" />
           <NavigationProperty Name="seg_usuario_x_aca_Sede" Relationship="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario" FromRole="seg_usuario" ToRole="seg_usuario_x_aca_Sede" />
           <NavigationProperty Name="seg_Usuario_x_Empresa" Relationship="ModelSeguridadAcceso.FK_seg_Usuario_x_Empresa_seg_usuario" FromRole="seg_usuario" ToRole="seg_Usuario_x_Empresa" />
         </EntityType>
@@ -315,42 +167,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
           <Property Name="Observacion" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="seg_usuario" Relationship="ModelSeguridadAcceso.FK_seg_usuario_x_aca_Sede_seg_usuario" FromRole="seg_usuario_x_aca_Sede" ToRole="seg_usuario" />
         </EntityType>
-        <Association Name="FK_aca_Menu_x_aca_Sede_aca_Menu">
-          <End Type="ModelSeguridadAcceso.aca_Menu" Role="aca_Menu" Multiplicity="1" />
-          <End Type="ModelSeguridadAcceso.aca_Menu_x_aca_Sede" Role="aca_Menu_x_aca_Sede" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aca_Menu">
-              <PropertyRef Name="IdMenu" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_aca_Sede">
-              <PropertyRef Name="IdMenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aca_Menu_x_seg_usuario_aca_Menu">
-          <End Type="ModelSeguridadAcceso.aca_Menu" Role="aca_Menu" Multiplicity="1" />
-          <End Type="ModelSeguridadAcceso.aca_Menu_x_seg_usuario" Role="aca_Menu_x_seg_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aca_Menu">
-              <PropertyRef Name="IdMenu" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_seg_usuario">
-              <PropertyRef Name="IdMenu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aca_Menu_x_seg_usuario_seg_usuario">
-          <End Type="ModelSeguridadAcceso.seg_usuario" Role="seg_usuario" Multiplicity="1" />
-          <End Type="ModelSeguridadAcceso.aca_Menu_x_seg_usuario" Role="aca_Menu_x_seg_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="seg_usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Principal>
-            <Dependent Role="aca_Menu_x_seg_usuario">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_seg_usuario_x_aca_Sede_seg_usuario">
           <End Type="ModelSeguridadAcceso.seg_usuario" Role="seg_usuario" Multiplicity="1" />
           <End Type="ModelSeguridadAcceso.seg_usuario_x_aca_Sede" Role="seg_usuario_x_aca_Sede" Multiplicity="*" />
@@ -406,42 +222,6 @@ advertencia 6002: La tabla o vista 'DBERP_LICEO.dbo.vwseg_usuario_x_aca_Sede' no
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelSeguridadAccesoStoreContainer" CdmEntityContainer="EntitiesSeguridadAcceso">
-          <EntitySetMapping Name="aca_Menu">
-            <EntityTypeMapping TypeName="ModelSeguridadAcceso.aca_Menu">
-              <MappingFragment StoreEntitySet="aca_Menu">
-                <ScalarProperty Name="web_nom_Action" ColumnName="web_nom_Action" />
-                <ScalarProperty Name="web_nom_Controller" ColumnName="web_nom_Controller" />
-                <ScalarProperty Name="web_nom_Area" ColumnName="web_nom_Area" />
-                <ScalarProperty Name="nivel" ColumnName="nivel" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="PosicionMenu" ColumnName="PosicionMenu" />
-                <ScalarProperty Name="DescripcionMenu" ColumnName="DescripcionMenu" />
-                <ScalarProperty Name="IdMenuPadre" ColumnName="IdMenuPadre" />
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aca_Menu_x_aca_Sede">
-            <EntityTypeMapping TypeName="ModelSeguridadAcceso.aca_Menu_x_aca_Sede">
-              <MappingFragment StoreEntitySet="aca_Menu_x_aca_Sede">
-                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aca_Menu_x_seg_usuario">
-            <EntityTypeMapping TypeName="ModelSeguridadAcceso.aca_Menu_x_seg_usuario">
-              <MappingFragment StoreEntitySet="aca_Menu_x_seg_usuario">
-                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
-                <ScalarProperty Name="IdSede" ColumnName="IdSede" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="seg_usuario">
             <EntityTypeMapping TypeName="ModelSeguridadAcceso.seg_usuario">
               <MappingFragment StoreEntitySet="seg_usuario">

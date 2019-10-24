@@ -63,6 +63,7 @@ namespace Core.Web.Areas.Academico.Controllers
             return true;
         }
         #endregion
+
         #region Acciones
         public ActionResult Nuevo(int IdEmpresa = 0)
         {
