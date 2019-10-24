@@ -1,6 +1,6 @@
 ﻿@model Core.Info.Academico.aca_AnioLectivo_NivelAcademico_Jornada_Info
 @{
-    ViewBag.Title = "Consulta de nivel por jornada";
+    ViewBag.Title = "Consulta de jornadas por nivel";
     if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
     {
         Response.Redirect("~/Account/Login");
@@ -36,7 +36,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("guardar", "NivelPorJornada", new { Area = "Academico" })',
+            url: '@Url.Action("guardar", "JornadaPorNivel", new { Area = "Academico" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,
@@ -51,7 +51,7 @@
     }
 </script>
 
-@using (Html.BeginForm("Index", "NivelPorJornada", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
+@using (Html.BeginForm("Index", "JornadaPorNivel", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
 {
     @Html.HiddenFor(q => q.IdEmpresa, new { @id = "IdEmpresa" })
     @Html.HiddenFor(q => q.IdTransaccionSession, new { @id = "IdTransaccionSession" })
@@ -132,6 +132,6 @@
     </div>
 
 
-    @Html.Action("GridViewPartial_NivelPorJornada")
+    @Html.Action("GridViewPartial_JornadaPorNivel")
 
 }

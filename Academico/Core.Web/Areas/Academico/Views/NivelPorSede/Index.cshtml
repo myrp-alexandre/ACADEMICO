@@ -1,6 +1,6 @@
 ﻿@model Core.Info.Academico.aca_AnioLectivo_Sede_NivelAcademico_Info
 @{
-    ViewBag.Title = "Consulta de sede por nivel";
+    ViewBag.Title = "Consulta niveles por sede";
     if (Session["IdUsuario"] == null || Session["IdEmpresa"] == null)
     {
         Response.Redirect("~/Account/Login");
@@ -35,7 +35,7 @@
         $.ajax({
             type: 'POST',
             data: JSON.stringify(datos),
-            url: '@Url.Action("guardar", "SedePorNivel", new { Area = "Academico" })',
+            url: '@Url.Action("guardar", "NivelPorSede", new { Area = "Academico" })',
             async: false,
             bDeferRender: true,
             bProcessing: true,
@@ -50,7 +50,7 @@
     }
 </script>
 
-@using (Html.BeginForm("Index", "SedePorNivel", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
+@using (Html.BeginForm("Index", "NivelPorSede", FormMethod.Post, new { @role = "form", @class = "form", @id = "myform" }))
 {
     @Html.HiddenFor(q => q.IdEmpresa, new { @id = "IdEmpresa" })
     @Html.HiddenFor(q => q.IdTransaccionSession, new { @id = "IdTransaccionSession" })
@@ -109,6 +109,6 @@
     </div>
 
 
-    @Html.Action("GridViewPartial_SedePorNivel")
+    @Html.Action("GridViewPartial_NivelPorSede")
 
 }

@@ -2,10 +2,10 @@
 @{
     var grid = Html.DevExpress().GridView(settings =>
     {
-        settings.Name = "GridViewPartial_NivelPorJornada";
-        settings.CallbackRouteValues = new { Controller = "NivelPorJornada", Action = "GridViewPartial_NivelPorJornada" };
+        settings.Name = "GridViewPartial_NivelPorSede";
+        settings.CallbackRouteValues = new { Controller = "NivelPorSede", Action = "GridViewPartial_NivelPorSede" };
         settings.Width = Unit.Percentage(100);
-        settings.KeyFieldName = "IdJornada";
+        settings.KeyFieldName = "IdNivel";
 
         //Configuración para que la grilla no muestre texto completo
         settings.SettingsBehavior.AllowEllipsisInText = true;
@@ -48,12 +48,18 @@
 
         settings.Columns.Add(column =>
         {
-            column.FieldName = "NomJornada";
-            column.Caption = "Jornada";
+            column.FieldName = "NomNivel";
+            column.Caption = "Nivel";
             column.Width = Unit.Percentage(80);
             column.EditFormSettings.Visible = DefaultBoolean.False;
         });
 
+        settings.Init = (s, e) =>
+        {
+            MVCxGridView gridView = (MVCxGridView)s;
+            gridView.Selection.SelectRowByKey("1");
+
+        };
         settings.ClientSideEvents.SelectionChanged = "OnSelectionChanged";
         settings.ClientSideEvents.BeginCallback = "OnBeginCallback";
     });

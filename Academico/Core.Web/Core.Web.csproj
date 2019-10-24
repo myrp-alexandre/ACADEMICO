@@ -204,10 +204,10 @@
     <Compile Include="Areas\Academico\Controllers\MenuPorSedeController.cs" />
     <Compile Include="Areas\Academico\Controllers\MenuPorSedePorUsuarioController.cs" />
     <Compile Include="Areas\Academico\Controllers\NivelAcademicoController.cs" />
-    <Compile Include="Areas\Academico\Controllers\NivelPorJornadaController.cs" />
+    <Compile Include="Areas\Academico\Controllers\JornadaPorNivelController.cs" />
     <Compile Include="Areas\Academico\Controllers\ParaleloController.cs" />
     <Compile Include="Areas\Academico\Controllers\SedeController.cs" />
-    <Compile Include="Areas\Academico\Controllers\SedePorNivelController.cs" />
+    <Compile Include="Areas\Academico\Controllers\NivelPorSedeController.cs" />
     <Compile Include="Areas\Reportes\ReportesAreaRegistration.cs" />
     <Compile Include="Areas\SeguridadAcceso\SeguridadAccesoAreaRegistration.cs" />
     <Compile Include="Areas\SeguridadAcceso\Controllers\UsuarioController.cs" />
@@ -7425,10 +7425,10 @@
     <Content Include="Areas\Academico\Views\Menu\Modificar.cshtml" />
     <Content Include="Areas\Academico\Views\Menu\Nuevo.cshtml" />
     <Content Include="Areas\Academico\Views\Menu\_TreeListPartial_menu.cshtml" />
-    <Content Include="Areas\Academico\Views\SedePorNivel\Index.cshtml" />
-    <Content Include="Areas\Academico\Views\SedePorNivel\_GridViewPartial_SedePorNivel.cshtml" />
-    <Content Include="Areas\Academico\Views\NivelPorJornada\Index.cshtml" />
-    <Content Include="Areas\Academico\Views\NivelPorJornada\_GridViewPartial_NivelPorJornada.cshtml" />
+    <Content Include="Areas\Academico\Views\NivelPorSede\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\NivelPorSede\_GridViewPartial_NivelPorSede.cshtml" />
+    <Content Include="Areas\Academico\Views\JornadaPorNivel\Index.cshtml" />
+    <Content Include="Areas\Academico\Views\JornadaPorNivel\_GridViewPartial_JornadaPorNivel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
